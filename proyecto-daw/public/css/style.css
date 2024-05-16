@@ -1,0 +1,107 @@
+*{
+	box-sizing: border-box;
+	font-family: Lato sans-serif;
+}
+
+:root{
+	--main-bg-color: #EDE1D2;
+	--secondary-bg-color: #CBB89D;
+	--main-text-color: #6A6F4C;
+	--secundary-text-color: #806044;
+}
+
+/* Clases imitando el mode de empleo de boot strap*/
+
+.text-main-color{
+	color: var(--main-text-color);
+}
+
+.text-secundary-color{
+	color: var(--secundary-text-color);
+}
+
+.vh-50{
+	height: 50vh;
+}
+
+.vh-75{
+	height: 75vh;
+}
+
+.svg-clases{
+	width: 50px;
+	height: 50px;
+}
+
+/*Estilos generales - DE MOMENTO PROVISIONALES*/
+
+body{
+	margin: 0 auto;
+	background: var(--main-bg-color);
+	height: 300vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+
+section{
+	margin-bottom: 200px;
+}
+
+a{
+	text-decoration: none;
+}
+
+header{
+	position: sticky;
+	z-index: 3;
+	top: 0;
+	height: 15vh;
+	background: var(--secondary-bg-color);
+	width: 100vw;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-bottom: 100px;
+}
+
+#logo{
+	width: 20%;
+	text-align: center;
+}
+
+#logo img{
+	width: 100px;
+	height: 10vh;
+}
+
+nav{
+	width: 60%;
+	
+}
+nav ul{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	list-style: none;
+}
+nav a{
+	color: var(--main-text-color);
+	font-size: 1.2rem;
+	padding: 1rem;
+	border-radius: 10%;
+}
+
+nav a:hover{
+	background-color: var(--main-bg-color);
+}
+
+.hero-image{
+	background-image: url(src/img/hero-image.jpg)center/cover;
+	height: 85vh;
+	width: 100vw;
+}
+
+
