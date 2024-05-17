@@ -179,14 +179,17 @@
         </section>
 
         <section>
-            <h2></h2>
+            <h2 class="h1 text-center fw-bold text-main-color">CONOCE A NUESTROS PROFESIONALES</h2>
             <article>
-                <div class="card" style="width: 18rem;">
+                <div class="card bg-transparent" style="width: 18rem;">
                     <img src="{{ asset('img/entrenador1.jpg') }}" class="card-img-top rounded-pill p-3" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="card-body text-center">
+                      <h5 class="card-title">JHON MIEW</h5>
+                      <ul class="card-text text-start">
+                        <li>Triatleta</li>
+                        <li>Crossfitter profesional</li>
+                      </ul>
+                      
                     </div>
                   </div>
             </article>

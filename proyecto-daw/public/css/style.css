@@ -8,6 +8,7 @@
 	--secondary-bg-color: #CBB89D;
 	--main-text-color: #6A6F4C;
 	--secundary-text-color: #806044;
+	--bs-body-color-rgb: 203, 184, 157;
 }
 
 /* Clases imitando el mode de empleo de boot strap*/
@@ -18,6 +19,10 @@
 
 .text-secundary-color{
 	color: var(--secundary-text-color);
+}
+
+.bg-2{
+	background-color: rgb(203, 184, 157)!important;
 }
 
 .vh-50{
@@ -32,6 +37,7 @@
 	width: 50px;
 	height: 50px;
 }
+
 
 /*Estilos generales - DE MOMENTO PROVISIONALES*/
 
