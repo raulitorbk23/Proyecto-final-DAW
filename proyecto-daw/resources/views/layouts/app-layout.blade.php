@@ -21,7 +21,7 @@
                 <div class="col-2" id="logo">
                     <a href="index.php"><img src="{{ asset('/img/logo.png') }}" alt="logo de temple gym"></a>
                 </div>
-                <nav class="col 10">
+                <nav class="col 10 d-flex">
                     <ul>
                         <li>
                             <a href="index.php">INICIO</a>
@@ -41,6 +41,10 @@
                         <li>
                             <a href="#">TIENDA</a>
                         </li>
+                    </ul>
+                    <ul class="">
+                        <li><a href="#"><small> INICIAR SESIÓN</small></a></li>
+                        <li><a href="#"><small>REGISTRARSE</small></a></li>
                     </ul>
                 </nav>
             </div>
