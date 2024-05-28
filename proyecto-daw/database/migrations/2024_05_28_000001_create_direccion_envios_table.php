@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pedido__productos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('direccion_envios', function (Blueprint $table) {
+            $table->id('id_direccion')->autoIncrement();
             $table->timestamps();
+            $table->string('pais');
+            $table->string('localidad');
+            $table->string('codPostal');
+            $table->string('direccion');
+            $table->string('telefono');
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedido__productos');
+        Schema::dropIfExists('direccion_envios');
     }
 };

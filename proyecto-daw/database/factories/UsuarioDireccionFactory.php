@@ -3,12 +3,15 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Usuario_Direccion>
  */
 class UsuarioDireccionFactory extends Factory
 {
+    
     /**
      * Define the model's default state.
      *
@@ -17,6 +20,7 @@ class UsuarioDireccionFactory extends Factory
     public function definition(): array
     {
         return [
+            
             //
         ];
     }

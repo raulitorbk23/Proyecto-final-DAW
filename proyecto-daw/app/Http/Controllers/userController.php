@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class userController extends Controller
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required'],
+            'password' => ['required',],
         ]);
  
         if (Auth::attempt($credentials)) {
@@ -32,11 +33,18 @@ class userController extends Controller
 
     public function store(Request $request){
         $name = $request->input('name');
+        $apellidos = $request->input('apellidos');
         $email = $request->input('email');
-        $password = $request->input('password');
+        if ($request->input('password')==$request->input('c-password')){
+            $password = $request->input('password');
+        } else {
+            return 'las contraseñas deben ser iguales';
+        }
+        
 
-        User::create([
+        Usuario::create([
             'name'=>$name,
+            'apellidos'=>$apellidos,
             'email'=>$email,
             'password'=>$password,
         ]);

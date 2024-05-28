@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('usuario__tarjetas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->primary(['id_tarjeta','id_usuario']);
+            
+            $table->foreignId('id_tarjeta')->references('id_tarjeta')->on('tarjetas')->onDelete('cascade');
+            $table->foreignId('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
         });
     }
 
@@ -22,6 +24,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        Schema::table('usuario__tarjetas', function (Blueprint $table) {
+            $table->dropForeign(['id_usuario']);
+            $table->dropForeign(['id_tarjeta']);
+        });
+
         Schema::dropIfExists('usuario__tarjetas');
     }
 };

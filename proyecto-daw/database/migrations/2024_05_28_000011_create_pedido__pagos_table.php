@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pedido__pagos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->primary(['id_pago','id_pedido']);
+            
+            $table->foreignId('id_pago')->references('id_pago')->on('pagos')->onDelete('cascade');
+            $table->foreignId('id_pedido')->references('id_pedido')->on('pedidos')->onDelete('cascade');
         });
     }
 
@@ -22,6 +24,13 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        Schema::table('pedido__pagos', function (Blueprint $table) {
+            $table->dropForeign(['id_pago']);
+            $table->dropForeign(['id_pedido']);
+        });
+
+
         Schema::dropIfExists('pedido__pagos');
     }
 };

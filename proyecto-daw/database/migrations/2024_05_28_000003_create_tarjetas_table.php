@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('direccion_envios', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tarjetas', function (Blueprint $table) {
+            $table->id('id_tarjeta')->autoIncrement();
             $table->timestamps();
+            $table->string('numTarjeta',20)->unique();
+            $table->string('titular',50);
+            $table->string('fecExpira',5);
+            $table->integer('cvc');
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('direccion_envios');
+        Schema::dropIfExists('tarjetas');
     }
 };

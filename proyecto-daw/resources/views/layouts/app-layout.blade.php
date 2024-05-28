@@ -44,8 +44,8 @@
                         </li>
                     </ul>
                     <ul class="">
-                        <li><a href="#"><small> INICIAR SESIÓN</small></a></li>
-                        <li><a href="#"><small>REGISTRARSE</small></a></li>
+                        <li><a href="{{ route('user.index') }}"><small> INICIAR SESIÓN</small></a></li>
+                        <li><a href="{{ route('user.registro') }}"><small>REGISTRARSE</small></a></li>
                     </ul>
                 </nav>
             </div>

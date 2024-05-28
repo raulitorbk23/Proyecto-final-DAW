@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('usuario__direccions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->primary(['id_direccion','id_usuario']);
+            
+            $table->foreignId('id_direccion')->references('id_direccion')->on('direccion_envios')->onDelete('cascade');
+            $table->foreignId('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
+
         });
     }
 
@@ -22,6 +25,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+
+        Schema::table('usuario__direccions', function (Blueprint $table) {
+            $table->dropForeign(['id_usuario']);
+            $table->dropForeign(['id_direccion']);
+        });
+
         Schema::dropIfExists('usuario__direccions');
     }
 };
