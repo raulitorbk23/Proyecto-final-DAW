@@ -17,7 +17,8 @@ class SubcategoriaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombre'=>fake()->word(),
+            'id_categoria'=> 1,
         ];
     }
 }

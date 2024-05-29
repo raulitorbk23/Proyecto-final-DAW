@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id('id_producto')->autoIncrement();
             $table->timestamps();
             $table->string('nombre', 50)->unique();
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->string('imagen')->nullable();
             $table->decimal('precioCompra', 8, 2);
             $table->decimal('precioVenta', 8, 2);
-            $table->decimal('descuento', 8, 2);
+            $table->decimal('descuento', 8, 2)->nullable();
             $table->integer('stock');
 
             // Define las claves foráneas de manera individual

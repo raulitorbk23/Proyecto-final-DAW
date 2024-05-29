@@ -9,5 +9,11 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    
+    protected $guarded = [];
+
+    public function subcategorias(){
+        return $this->hasMany(Subcategoria::class, 'subcategorias'); 
+    }
+
+    public $timestamps = false;
 }

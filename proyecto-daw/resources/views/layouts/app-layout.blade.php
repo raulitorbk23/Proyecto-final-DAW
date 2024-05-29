@@ -20,12 +20,12 @@
         <header class="container-fluid">
             <div class="container d-flex align-items-center justify-content-center">
                 <div class="col-2" id="logo">
-                    <a href="index.php"><img src="{{ asset('/img/logo.png') }}" alt="logo de temple gym"></a>
+                    <a href="{{ route('index') }}"><img src="{{ asset('/img/logo.png') }}" alt="logo de temple gym"></a>
                 </div>
-                <nav class="col 10 d-flex">
+                <nav class="col 10 d-flex align-items-center">
                     <ul>
                         <li>
-                            <a href="index.php">INICIO</a>
+                            <a href="{{ route('index') }}">INICIO</a>
                         </li>
                         <li>
                             <a href="#">INSTALACIONES</a>
@@ -40,10 +40,10 @@
                             <a href="#">ENCUENTRANOS</a>
                         </li>
                         <li>
-                            <a href="#">TIENDA</a>
+                            <a href="{{ route('tienda') }}">TIENDA</a>
                         </li>
                     </ul>
-                    <ul class="">
+                    <ul class=" d-flex align-items-center">
                         <li><a href="{{ route('user.index') }}"><small> INICIAR SESIÓN</small></a></li>
                         <li><a href="{{ route('user.registro') }}"><small>REGISTRARSE</small></a></li>
                     </ul>

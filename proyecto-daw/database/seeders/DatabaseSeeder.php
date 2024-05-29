@@ -16,5 +16,9 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call(UsuarioSeeder::class);
+        $this->call(CategoriaSeeder::class);
+        $this->call(SubcategoriaSeeder::class);
+        $this->call(ProductoSeeder::class);
+
     }
 }

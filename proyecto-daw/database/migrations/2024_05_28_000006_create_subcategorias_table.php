@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('subcategorias', function (Blueprint $table) {
-            $table->id('id_subcategoria');
+            $table->id('id_subcategoria')->autoIncrement();
             $table->string('nombre',30);
 
             $table->foreignId('id_categoria')->references('id_categoria')->on('categorias')->onDelete('cascade');
