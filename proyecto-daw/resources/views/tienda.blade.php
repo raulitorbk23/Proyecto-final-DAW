@@ -20,6 +20,7 @@
                     <h5 class="card-title mb-3">{{ $producto->nombre }}</h5>
                     </a>
                     <h6 class="mb-3">{{ $producto->precioVenta }} euros</h6>
+                    <h6 class="mb-3">{{ $producto->id_categoria }}</h6>
                 </div>
                 </div>
             </div>

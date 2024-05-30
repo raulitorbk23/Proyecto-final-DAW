@@ -25,22 +25,22 @@
                 <nav class="col 10 d-flex align-items-center justify-content-between">
                     <ul>
                         <li>
-                            <a href="#">NOVEDADES</a>
+                            <a href="{{ route('tienda.novedades') }}">NOVEDADES</a>
                         </li>
                         <li>
-                            <a href="#">SUPLEMENTOS</a>
+                            <a href="{{ route('tienda.suplementos') }}">SUPLEMENTOS</a>
                         </li>
                         <li>
-                            <a href="#">ROPA</a>
+                            <a href="{{ route('tienda.ropa') }}">ROPA</a>
                         </li>
                         <li>
-                            <a href="#">ACCESORIOS</a>
+                            <a href="{{ route('tienda.accesorios') }}">ACCESORIOS</a>
                         </li>
                         <li>
-                            <a href="#">CALZADO</a>
+                            <a href="{{ route('tienda.calzado') }}">CALZADO</a>
                         </li>
                         <li>
-                            <a href="#">OFERTAS</a>
+                            <a href="{{ route('tienda.ofertas') }}">OFERTAS</a>
                         </li>
                     </ul>
                     <ul class="float-end">
