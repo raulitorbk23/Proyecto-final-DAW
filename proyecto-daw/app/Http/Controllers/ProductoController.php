@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
+use App\Models\Subcategoria;
 
 class ProductoController extends Controller
 {
@@ -14,7 +15,18 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::all();
-        return view('tienda',compact('productos'));
+
+        $subcategorias = [];
+        $scName = [];
+        foreach($productos as $producto){
+            if (!in_array($producto->id_subcategoria, $subcategorias)) {
+                array_push($subcategorias,$producto->id_subcategoria);
+            }
+        }
+        foreach($subcategorias as $subcategoria){
+            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+        }
+        return view('tienda',compact('productos','scName'));
     }
 
     /**

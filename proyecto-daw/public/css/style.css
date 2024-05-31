@@ -11,7 +11,7 @@
 	--bs-body-color-rgb: 203, 184, 157;
 }
 
-/* Clases imitando el mode de empleo de boot strap*/
+/* Clases propias*/
 
 .text-main-color{
 	color: var(--main-text-color);
@@ -19,6 +19,14 @@
 
 .text-secundary-color{
 	color: var(--secundary-text-color);
+}
+
+.bg-main{
+	background-color: #EDE1D2;
+}
+
+.bg-secundary{
+	background-color: #CBB89D;
 }
 
 .bg-2{
@@ -38,13 +46,16 @@
 	height: 50px;
 }
 
+.w-20{
+	width: 20% !important;
+}
+
 
 /*Estilos generales - DE MOMENTO PROVISIONALES*/
 
 body{
 	margin: 0 auto;
 	background: var(--main-bg-color);
-	height: 300vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
@@ -63,7 +74,7 @@ header{
 	position: sticky;
 	z-index: 3;
 	top: 0;
-	height: 15vh;
+	height: 100px;
 	background: var(--secondary-bg-color);
 	width: 100vw;
 	display: flex;
