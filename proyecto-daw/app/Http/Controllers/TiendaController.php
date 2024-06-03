@@ -103,4 +103,36 @@ class TiendaController extends Controller
         }
         return view('tienda',compact('productos','scName'));
     }
+
+    public function recibirProductoCarrito(Request $request){
+        $producto = Producto::where('nombre', $request->nombre)->first();
+
+        if (!$producto) {
+            return response()->json(['error' => 'Producto no encontrado'], 404);
+        }
+    
+        $precioFinal = isset($producto->descuento) ? $producto->precioVenta - $producto->descuento : $producto->precioVenta;
+
+        // Convertir el precio final a un float con dos decimales
+        $precioFinal = number_format($precioFinal, 2, '.', '');
+
+        $jsonProducto = [
+            'nombre' => $producto->nombre,
+            'precio' => (float) $precioFinal, 
+            'img' => $producto->imagen,
+            'cantidad' => null
+        ];
+    
+        return response()->json($jsonProducto, 200);
+
+        /*.then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })*/
+    }
+    
 }
+
+

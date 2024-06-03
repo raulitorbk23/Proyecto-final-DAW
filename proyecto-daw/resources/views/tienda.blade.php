@@ -30,7 +30,7 @@
                         <a href="" class="text-reset">
                         <h5 class="card-title mb-3">{{ $producto->nombre }}</h5>
                         </a>
-                        <h6 class="mb-3">{{ $producto->precioVenta }} euros</h6>
+                        <h6 class="mb-3">{{ isset($producto->descuento) ? $producto->precioVenta - $producto->descuento : $producto->precioVenta }} euros</h6>
                         
                         <div class="d-flex justify-content-center"><button class="btn btn-primary btn-lg text-center añadirCarrito">Comprar</button></div>
                     </div>
@@ -40,4 +40,22 @@
 
         </div>
     </div>
+    <div id="carrito" class="carrito">
+        <div class="carrito-header">
+            <h2>Carrito</h2>
+            <button id="cerrarCarrito" class="btn btn-close p-3"></button>
+        </div>
+        <div class="carrito-body">
+            <!-- Aquí se mostrarán los productos del carrito -->
+            <ul id="productosCarrito">
+                
+            </ul>
+        </div>
+        <div class="carrito-footer">
+            <strong>Total: $<span id="precioCarrito">0.00</span></strong>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/tienda.js') }}">
+    </script>
 @endsection

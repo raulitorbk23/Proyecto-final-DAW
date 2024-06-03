@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\userController;
@@ -24,4 +25,8 @@ Route::get('/tienda/accesorios',[TiendaController::class, 'accesorios'])->name('
 Route::get('/tienda/calzado',[TiendaController::class, 'calzado'])->name('tienda.calzado');
 Route::get('/tienda/ofertas',[TiendaController::class, 'ofertas'])->name('tienda.ofertas');
 Route::get('/tienda/novedades',[TiendaController::class, 'novedades'])->name('tienda.novedades');
+
+Route::post('/tienda/guardar-en-carrito',[TiendaController::class, 'recibirProductoCarrito'])->name('tienda.carrito.añadirProducto');
+
+
 
