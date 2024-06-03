@@ -104,7 +104,10 @@ class TiendaController extends Controller
         return view('tienda',compact('productos','scName'));
     }
 
-    public function recibirProductoCarrito(Request $request){
+    /*
+    funcionalidad carrito dinámico solo con javascript
+    
+    public function añadirProductoCarrito(Request $request){
         $producto = Producto::where('nombre', $request->nombre)->first();
 
         if (!$producto) {
@@ -115,7 +118,7 @@ class TiendaController extends Controller
 
         // Convertir el precio final a un float con dos decimales
         $precioFinal = number_format($precioFinal, 2, '.', '');
-
+        
         $jsonProducto = [
             'nombre' => $producto->nombre,
             'precio' => (float) $precioFinal, 
@@ -125,13 +128,7 @@ class TiendaController extends Controller
     
         return response()->json($jsonProducto, 200);
 
-        /*.then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })*/
-    }
+    }*/
     
 }
 

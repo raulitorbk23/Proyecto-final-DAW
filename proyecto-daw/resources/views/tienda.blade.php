@@ -54,6 +54,10 @@
         <div class="carrito-footer">
             <strong>Total: $<span id="precioCarrito">0.00</span></strong>
         </div>
+        <form action="{{ route('') }}">
+            <button class="btn btn-primary btn-lg float-end" id="comprarBtn">Comprar</button>
+        </form>
+
     </div>
 
     <script src="{{ asset('js/tienda.js') }}">

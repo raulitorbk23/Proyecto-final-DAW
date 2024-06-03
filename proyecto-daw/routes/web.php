@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +26,10 @@ Route::get('/tienda/calzado',[TiendaController::class, 'calzado'])->name('tienda
 Route::get('/tienda/ofertas',[TiendaController::class, 'ofertas'])->name('tienda.ofertas');
 Route::get('/tienda/novedades',[TiendaController::class, 'novedades'])->name('tienda.novedades');
 
-Route::post('/tienda/guardar-en-carrito',[TiendaController::class, 'recibirProductoCarrito'])->name('tienda.carrito.añadirProducto');
+Route::post('/tienda/guardar-en-carrito',[TiendaController::class, 'añadirProductoCarrito'])->name('tienda.carrito.añadirProducto');
 
-
+Route::post('/store', [SessionController::class, 'storeData']);
+Route::post('/actualizar-cantidad', [SessionController::class, 'actualizarCantidad']);
+Route::get('/get', [SessionController::class, 'getData']);
+Route::delete('/delete', [SessionController::class, 'deleteData']);
 
