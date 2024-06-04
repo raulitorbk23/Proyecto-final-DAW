@@ -1,7 +1,5 @@
 const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-// JavaScript para manejar el carrito 
-
 document.addEventListener('DOMContentLoaded', function() {
     const botonCarrito = document.getElementById('botonCarrito');
     const cerrarCarrito = document.getElementById('cerrarCarrito');
@@ -217,9 +215,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     renderCart();
-
-    console.log(carrito);
-    console.log(productosCarrito.childNodes[0]);
 
 });
 

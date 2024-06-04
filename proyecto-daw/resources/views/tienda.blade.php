@@ -54,7 +54,7 @@
         <div class="carrito-footer">
             <strong>Total: $<span id="precioCarrito">0.00</span></strong>
         </div>
-        <form action="{{ route('') }}">
+        <form action="{{ route('pagar') }}">
             <button class="btn btn-primary btn-lg float-end" id="comprarBtn">Comprar</button>
         </form>
 

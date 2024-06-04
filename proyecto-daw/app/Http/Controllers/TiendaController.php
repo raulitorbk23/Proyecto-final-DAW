@@ -104,6 +104,9 @@ class TiendaController extends Controller
         return view('tienda',compact('productos','scName'));
     }
 
+    public function pagar(){
+        return view('pagar');
+    }
     /*
     funcionalidad carrito dinámico solo con javascript
     

@@ -33,3 +33,5 @@ Route::post('/actualizar-cantidad', [SessionController::class, 'actualizarCantid
 Route::get('/get', [SessionController::class, 'getData']);
 Route::delete('/delete', [SessionController::class, 'deleteData']);
 
+Route::get('/pagar', [TiendaController::class, 'pagar'])->name('pagar');
+
