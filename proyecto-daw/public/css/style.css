@@ -37,8 +37,23 @@
 	height: 50vh;
 }
 
+.vh-40{
+	height: 40vh;
+}
+
 .vh-75{
 	height: 75vh;
+}
+
+.vw-30{
+	width: 30vw;
+}
+.top-25{
+	top:25% !important;
+}
+
+.start-80{
+	left: 80% !important;
 }
 
 .svg-clases{

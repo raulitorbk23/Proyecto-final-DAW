@@ -6,6 +6,7 @@ use App\Models\Producto;
 use App\Models\Subcategoria;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TiendaController extends Controller
 {
@@ -20,6 +21,7 @@ class TiendaController extends Controller
         }
         foreach($subcategorias as $subcategoria){
             array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+
         }
         return view('tienda',compact('productos','scName'));
 

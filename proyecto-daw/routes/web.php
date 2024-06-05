@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\userController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,4 +35,5 @@ Route::get('/get', [SessionController::class, 'getData']);
 Route::delete('/delete', [SessionController::class, 'deleteData']);
 
 Route::get('/pagar', [TiendaController::class, 'pagar'])->name('pagar');
+
 

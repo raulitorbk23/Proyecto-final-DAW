@@ -179,19 +179,60 @@
         </section>
 
         <section>
-            <h2 class="h1 text-center fw-bold text-main-color">CONOCE A NUESTROS PROFESIONALES</h2>
-            <article>
-                <div class="card bg-transparent" style="width: 18rem;">
-                    <img src="{{ asset('img/entrenador1.jpg') }}" class="card-img-top rounded-pill p-3" alt="...">
+            <h2 class="h1 text-center fw-bold text-main-color mb-5">CONOCE A NUESTROS PROFESIONALES</h2>
+            <article class="d-flex justify-content-evenly align-items-center gap-5">
+                <div class="card bg-transparent border-0" style="width: 20rem;">
+                    <img src="{{ asset('img/entrenador1.jpg') }}" class="card-img-top rounded-circle p-3 vh-40" alt="...">
                     <div class="card-body text-center">
-                      <h5 class="card-title">JHON MIEW</h5>
+                      <h5 class="card-title h3 fw-bold">JHON MIEW</h5>
                       <ul class="card-text text-start">
-                        <li>Triatleta</li>
-                        <li>Crossfitter profesional</li>
+                        <li class="h5">Triatleta</li>
+                        <li class="h5">Crossfitter profesional</li>
                       </ul>
                       
                     </div>
                   </div>
+                  <div class="card bg-transparent border-0" style="width: 20rem;">
+                    <img src="{{ asset('img/entrenador2.jpg') }}" class="card-img-top rounded-circle p-3 vh-40" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title h3 fw-bold">RONALDO MENDEZ</h5>
+                      <ul class="card-text text-start">
+                        <li class="h5">Experto en artes marciales</li>
+                        <li class="h5">Calisténico profesional</li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+                  <div class="card bg-transparent border-0" style="width: 20rem;">
+                    <img src="{{ asset('img/entrenador3.jpg') }}" class="card-img-top rounded-circle p-3 vh-40" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title h3 fw-bold">LUZ MARTINEZ</h5>
+                      <ul class="card-text text-start">
+                        <li class="h5">Psicóloga</li>
+                        <li class="h5">Gimnasta profesional</li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+            </article>
+        </section>
+        <section>
+            <h2>DISPONEMOS DE MÚLTIPLES OPCIONES DE MEMBRESÍA</h2>
+            <article>
+                <div>
+                    <h3>PLAN ESTÁNDAR</h3>
+                    <img src="" alt="">
+                    <p>24.99</p>
+                    <h4>¿Qué ventajas tiene?</h4>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
             </article>
         </section>
 @endsection

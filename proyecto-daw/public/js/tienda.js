@@ -79,9 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 comprarBtn.style.display = 'none'; 
             }
-
+            let numArticulos = 0;
             carrito = data.data;
             data.data.forEach(item => {
+                numArticulos++;
+                console.log('num'+numArticulos);
                 let li = document.createElement('li');
                 li.classList.add('my-2', 'd-flex', 'align-items-center', 'justify-content-between');
     
@@ -159,6 +161,32 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     
             actualizarTotal();
+
+
+            //código para modificar numero que indica cantidad de productos en carrito
+            let carritoArticulos = document.querySelector('.numCarritos');
+
+            if(numArticulos>0){
+                if(carritoArticulos){
+
+                    carritoArticulos.textContent = numArticulos;
+                    carritoArticulos.classList.remove('d-none');
+
+                } else {
+
+                    carritoArticulos = document.createElement('span');
+                    carritoArticulos.classList.add('position-absolute', 'top-25', 'start-80', 'translate-middle', 'badge', 'rounded-pill', 'bg-danger', 'numCarritos');
+                    carritoArticulos.textContent = numArticulos;
+                    botonCarrito.appendChild(carritoArticulos);
+
+                }  
+            } else {
+
+                if(carritoArticulos){
+                    carritoArticulos.classList.add('d-none');
+                    
+                }
+            }
 
         })
         .catch(error => {
