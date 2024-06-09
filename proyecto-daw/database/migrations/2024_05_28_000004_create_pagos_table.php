@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->id('id_pago')->autoIncrement();
+            $table->string('id_transaccion', 20);
             $table->date('fecPago');
+            $table->string('email',50);
             $table->decimal('cantidad', total: 8, places: 2);
-            $table->enum('estado',['pendiente','realizado','fallado'])->default('pendiente');
+            $table->string('estado',15)->default('pendiente');
+            $table->string('id_cliente',20);
 
             $table->foreignId('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
             $table->foreignId('id_tarjeta')->references('id_tarjeta')->on('tarjetas')->onDelete('cascade');

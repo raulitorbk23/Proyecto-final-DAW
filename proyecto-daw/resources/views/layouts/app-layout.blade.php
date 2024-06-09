@@ -14,9 +14,13 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
         
     </head>
-    <body >
+    <body class="chakra-petch-regular">
         <header class="container-fluid">
             <div class="container d-flex align-items-center justify-content-center">
                 <div class="col-2" id="logo">
@@ -44,7 +48,7 @@
                         </li>
                     </ul>
                     <ul class=" d-flex align-items-center">
-                        <li><a href="{{ route('user.index') }}"><small> INICIAR SESIÓN</small></a></li>
+                        <li><a href="{{ route('login') }}"><small> INICIAR SESIÓN</small></a></li>
                         <li><a href="{{ route('user.registro') }}"><small>REGISTRARSE</small></a></li>
                     </ul>
                 </nav>

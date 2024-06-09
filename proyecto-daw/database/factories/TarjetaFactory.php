@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Tarjeta;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,17 @@ class TarjetaFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Tarjeta::class;
+
     public function definition(): array
     {
         return [
-            //
+            'numTarjeta' => $this->faker->creditCardNumber,
+            'titular' => $this->faker->name,
+            'fecExpira' => $this->faker->creditCardExpirationDateString, 
+            'cvc' => $this->faker->numberBetween(100, 999),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

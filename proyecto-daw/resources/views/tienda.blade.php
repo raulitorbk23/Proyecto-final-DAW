@@ -18,12 +18,13 @@
                     <div class="card">
                     <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                         data-mdb-ripple-color="light">
-                        <img src="{{ asset('img/'.$producto->imagen) }}"
-                        class="w-100" />
-                        <a href="#">
-                        <div class="hover-overlay">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </div>
+                        <a href="{{ route('tienda.show', ['producto' => $producto->nombre]) }}">
+                            <img src="{{ asset('img/'.$producto->imagen) }}"
+                            class="w-100" />
+                            
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
                         </a>
                     </div>
                     <div class="card-body">
@@ -39,6 +40,9 @@
             @endforeach
 
         </div>
+
+        <div class="">{{ $productos->links() }}</div>
+        
     </div>
     <div id="carrito" class="carrito">
         <div class="carrito-header">
@@ -54,7 +58,7 @@
         <div class="carrito-footer">
             <strong>Total: $<span id="precioCarrito">0.00</span></strong>
         </div>
-        <form action="{{ route('pagar') }}">
+        <form action="{{ route('pagar.carrito') }}">
             <button class="btn btn-primary btn-lg float-end" id="comprarBtn">Comprar</button>
         </form>
 

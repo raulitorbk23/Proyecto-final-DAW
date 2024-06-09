@@ -10,8 +10,28 @@ use Illuminate\Support\Facades\Session;
 
 class TiendaController extends Controller
 {
+
+    public function index(){
+        $productos = Producto::orderBy('updated_at','asc')->paginate(8);
+
+        $subcategorias = [];
+        $scName = [];
+
+        foreach($productos as $producto){
+            if (!in_array($producto->id_subcategoria, $subcategorias)) {
+                array_push($subcategorias,$producto->id_subcategoria);
+            }
+        }
+
+        foreach($subcategorias as $subcategoria){
+            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+        }
+
+        return view('tienda',compact('productos','scName'));
+    }
+    
     public function suplementos(){
-        $productos = Producto::all()->where('id_categoria',1);
+        $productos = Producto::where('id_categoria',1)->orderBy('updated_at','asc')->paginate(6);
         $subcategorias = [];
         $scName = [];
         foreach($productos as $producto){
@@ -28,7 +48,7 @@ class TiendaController extends Controller
     }
 
     public function ropa(){
-        $productos = Producto::all()->where('id_categoria',2);
+        $productos = Producto::where('id_categoria',2)->orderBy('updated_at','asc')->paginate(6);
         $subcategorias = [];
         $scName = [];
         foreach($productos as $producto){
@@ -43,7 +63,7 @@ class TiendaController extends Controller
     }
 
     public function accesorios(){
-        $productos = Producto::all()->where('id_categoria',3);
+        $productos = Producto::where('id_categoria',3)->orderBy('updated_at','asc')->paginate(6);
         $subcategorias = [];
         $scName = [];
         foreach($productos as $producto){
@@ -58,7 +78,7 @@ class TiendaController extends Controller
     }
 
     public function calzado(){
-        $productos = Producto::all()->where('id_categoria',4);
+        $productos = Producto::where('id_categoria',4)->orderBy('updated_at','asc')->paginate(6);
         $subcategorias = [];
         $scName = [];
         foreach($productos as $producto){
@@ -73,7 +93,7 @@ class TiendaController extends Controller
     }
 
     public function ofertas(){
-        $productos = Producto::all()->where('descuento','>',0);
+        $productos = Producto::where('descuento','>',0)->orderBy('updated_at','asc')->paginate(6);
         $subcategorias = [];
         $scName = [];
         foreach($productos as $producto){
@@ -91,7 +111,7 @@ class TiendaController extends Controller
 
         ##Recojo los productos que tengan una antigÜedad igual o inferior a 30 dias
         ##Para ello utilizo una librería de laravel para manipular fechas 'Carbon' 
-        $productos = Producto::where('created_at', '>=', Carbon::now()->subDays(30))->get();
+        $productos = Producto::where('created_at', '>=', Carbon::now()->subDays(30))->orderBy('updated_at','asc')->paginate(6);
 
         $subcategorias = [];
         $scName = [];
@@ -107,7 +127,9 @@ class TiendaController extends Controller
     }
 
     public function pagar(){
+
         return view('pagar');
+        
     }
     /*
     funcionalidad carrito dinámico solo con javascript

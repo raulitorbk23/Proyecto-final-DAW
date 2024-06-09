@@ -44,11 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             renderCart();
         })
         .catch(error => {
-            if (error.message=='El encabezado de la Set-Cookie se ignora en la respuesta de la URL') {
-                alert('La cookie no puede exceder los 4096 caracteres.');
-            } else {
-                console.error('Error:', error);
-            }
+            console.error('Error:', error);
         });
     }
 
@@ -74,16 +70,23 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(data);
 
             //el boton pagar se muestra solo si hay productos en el carrito
+
             if (data.data.length > 0) {
                 comprarBtn.style.display = 'block'; 
             } else {
                 comprarBtn.style.display = 'none'; 
             }
+
             let numArticulos = 0;
             carrito = data.data;
+
             data.data.forEach(item => {
+
+                //Aumentamos el numero de articulos del carrito
                 numArticulos++;
+
                 console.log('num'+numArticulos);
+
                 let li = document.createElement('li');
                 li.classList.add('my-2', 'd-flex', 'align-items-center', 'justify-content-between');
     
@@ -184,7 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if(carritoArticulos){
                     carritoArticulos.classList.add('d-none');
-                    
                 }
             }
 
@@ -240,9 +242,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(nomProducto);
             añadirProductoCarrito(nomProducto);
         }
+
+        if(e.target.classList.contains('card')){
+            
+        }
     })
 
     renderCart();
 
 });
-

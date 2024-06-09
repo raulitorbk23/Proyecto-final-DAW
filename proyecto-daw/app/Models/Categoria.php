@@ -9,6 +9,8 @@ class Categoria extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_categoria';
+
     protected $guarded = [];
 
     public function subcategorias(){

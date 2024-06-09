@@ -33,12 +33,17 @@ class userController extends Controller
     }
 
     public function store(Request $request){
+
         $name = $request->input('name');
         $apellidos = $request->input('apellidos');
         $email = $request->input('email');
+        
         if ($request->input('password')==$request->input('c-password')){
+
             $password = $request->input('password');
+
         } else {
+
             return 'las contraseñas deben ser iguales';
         }
         

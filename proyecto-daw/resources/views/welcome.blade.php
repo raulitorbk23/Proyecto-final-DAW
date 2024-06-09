@@ -1,7 +1,8 @@
 @extends('layouts.app-layout')
 
 @section('content')
-        <section  id="learn-a-bit" class="row gx-5 mx-auto vh-100">
+
+        <section  id="learn-a-bit" class="row gx-5 mx-auto vh-100 section">
             <article class="col-6 w-40 align-self-center fs-5" style="text-align: justify">
 
                 <h2 class=" h1 text-center mb-5 text-main-color fw-bold" >APRENDE UN POCO ACERCA DE TEMPLE GYM</h2>
@@ -19,7 +20,7 @@
             </article>
             <img src="{{ asset('/img/foto_gym.jpeg') }}" class="col-6 "  />
         </section>
-        <section>
+        <section class="section">
             <article>
                 <h2 class="h1 text-center mb-5 fw-bold text-main-color">NUESTRAS INSTALACIONES DEPORTIVAS</h2>
                 <div id="carouselExampleIndicators" class="carousel slide">
@@ -62,15 +63,15 @@
                   </div>
             </article>
         </section>
-        <section>
+        <section class="section">
             <article>
                 <h2 class="h1 text-center mb-5 fw-bold text-main-color">¿A QUÉ CLASES PODRÁS ASISTIR EN TEMPLE GYM?</h2>
                 <div class="d-flex row">
-                    <div class="col">
+                    <div class="col ms-5">
 
                         <div class="d-flex align-items-center mb-4">
                             <svg class="svg-clases me-3 mb-2" fill="#806044" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 536.172 536.172" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M447.737,351.586c1.606,9.313,9.696,15.864,18.829,15.864c1.07,0,2.171-0.096,3.279-0.277 c10.414-1.798,17.385-11.705,15.587-22.108L464.146,222.09c-0.621-3.644-2.305-7.019-4.819-9.735l-104.05-112.331 c-7.172-7.746-19.287-8.195-27.023-1.023c-7.745,7.172-8.204,19.278-1.022,27.023l56.074,60.54l-47.287,16.323l-44.953-86.569 c8.31-6.407,9.916-18.303,3.576-26.679c-4.991-6.589-13.416-8.979-20.894-6.656l-15.826-30.476 c-7.306-14.066-24.633-19.546-38.68-12.23c-14.066,7.306-19.546,24.614-12.24,38.68l19.785,38.097l-34.492,26.134l-38.403-16.199 c-2.687-1.138-5.479-1.549-8.214-1.435l-0.019-0.086l-0.44,0.115c-2.343,0.153-4.609,0.717-6.732,1.692l-69.156,17.375 c-6.502,0.506-12.594,4.246-15.701,10.519L1.992,259.432c-4.686,9.467-0.822,20.933,8.645,25.628 c2.725,1.357,5.623,1.988,8.472,1.988c7.038,0,13.818-3.901,17.146-10.633l38.776-78.289l14.822,71.776L56.125,393.584 L20.18,458.169c-7.708,13.837-2.735,31.308,11.111,39.016c4.418,2.467,9.199,3.634,13.923,3.634 c10.079,0,19.852-5.326,25.092-14.746l37.647-67.626c1.128-2.018,1.999-4.169,2.611-6.406l26.583-97.461l75.458,72.503 l2.926,65.196c0.688,15.387,13.388,27.397,28.64,27.397c0.431,0,0.87-0.01,1.31-0.029c15.835-0.707,28.085-14.124,27.377-29.949 l-3.433-76.653c-0.325-7.344-3.471-14.296-8.778-19.393l-83.165-79.914l-22.472-104.776l32.618,13.761 c2.391,1.014,4.915,1.501,7.43,1.501c4.102,0,8.167-1.319,11.551-3.882l38.078-28.85l56.734,109.242v206.215 c0,15.846,12.842,28.688,28.688,28.688c15.845,0,28.688-12.842,28.688-28.688V279.876l73.459-17.824L447.737,351.586z"></path> <circle cx="81.131" cy="80.412" r="45.059"></circle> <circle cx="491.113" cy="166.685" r="45.059"></circle> </g> </g> </g></svg>
-                            <h3>ARTES MARCIALES</h3>
+                            <h3 class="h4">ARTES MARCIALES</h3>
                         </div>
                         <div class=" d-flex flex-column justify-content-end">
                             <div class="d-flex align-items-center">
@@ -97,7 +98,7 @@
                         
                         <div class="d-flex align-items-center mb-4">
                             <svg class="svg-clases me-3 mb-2" fill="#806044" width="64px" height="64px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 16.03125 3.46875 L 15.375 4.03125 C 15.375 4.03125 13.035156 5.941406 10.71875 8.71875 C 8.402344 11.496094 6 15.160156 6 19 C 6 21.765625 7.132813 24.070313 8.96875 25.625 C 10.691406 27.082031 12.996094 27.871094 15.5 27.96875 C 15.667969 27.976563 15.832031 28 16 28 C 16.167969 28 16.332031 27.976563 16.5 27.96875 C 19.003906 27.871094 21.308594 27.082031 23.03125 25.625 C 24.867188 24.070313 26 21.765625 26 19 C 26 15.542969 23.585938 11.941406 21.28125 9.0625 C 18.976563 6.183594 16.6875 4.0625 16.6875 4.0625 Z M 15.96875 6.25 C 16.488281 6.742188 17.851563 7.976563 19.71875 10.3125 C 21.914063 13.058594 24 16.558594 24 19 C 24 21.234375 23.132813 22.929688 21.71875 24.125 C 21.375 24.414063 21 24.679688 20.59375 24.90625 C 20.839844 24.316406 21 23.675781 21 23 C 21 16.75 17.65625 12.9375 17.65625 12.9375 L 15.84375 10.90625 L 15.90625 13.625 C 15.90625 13.625 15.910156 14.898438 15.75 16.125 C 15.667969 16.738281 15.554688 17.347656 15.40625 17.6875 C 15.363281 17.785156 15.34375 17.796875 15.3125 17.84375 C 15.207031 17.804688 14.890625 17.648438 14.59375 17.34375 C 14.257813 17 14.03125 16.65625 14.03125 16.65625 L 13.0625 15.15625 L 12.3125 16.78125 C 12.3125 16.78125 11 19.457031 11 23 C 11 23.675781 11.160156 24.316406 11.40625 24.90625 C 11 24.679688 10.625 24.414063 10.28125 24.125 C 8.867188 22.929688 8 21.234375 8 19 C 8 16.042969 10.097656 12.621094 12.28125 10 C 14.132813 7.78125 15.445313 6.695313 15.96875 6.25 Z M 17.65625 16.78125 C 18.339844 18.265625 19 20.339844 19 23 C 19 24.65625 17.65625 26 16 26 C 14.34375 26 13 24.65625 13 23 C 13 21.40625 13.308594 20.058594 13.59375 19.09375 C 14.042969 19.496094 14.59375 19.90625 15.40625 19.90625 C 15.882813 19.90625 16.335938 19.6875 16.625 19.40625 C 16.914063 19.125 17.078125 18.792969 17.21875 18.46875 C 17.445313 17.941406 17.5625 17.355469 17.65625 16.78125 Z"></path></g></svg>
-                            <h3>QUEMA GRASAS</h3>
+                            <h3 class="h4">QUEMA GRASAS</h3>
                         </div>
                         <div class=" d-flex flex-column justify-content-end">
                             <div class="d-flex align-items-center">
@@ -124,7 +125,7 @@
                         
                         <div class="d-flex align-items-center mb-4">
                             <svg class="svg-clases me-3 mb-2" fill="#806044" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 208.081 208.081" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M140.457,0.394c0,0,7.837-2.476,10.869,4.987c0,0,11.624,12.909,12.891,22.213c0,0,0.481,2.841-2.283,4.375 c-2.064,1.124-4.872,3.922-6.723,6.187c0,0-6.235,7.843-17.537,7.843c0,0-1.498-0.161-4.664,7.17 c-1.607,3.742-5.998,9.378-9.219,13.713c-1.955,2.618-4.592,9.578-5.304,11.661c-1.565,4.494-2.027,15.637-0.384,18.803 c0,0,5.176,12.243,6.576,17.674c0.092,0.329,2.497,7.447,1.285,17.708c-0.116,0.998-0.786,4.896-1.041,7.203 c-0.372,3.301-0.25,10.133,1.017,13.25c1.212,2.983,4.853,5.742,5.87,13.506c1.028,7.581-1.157,18.541-0.311,25.13 c0.475,3.684,2.137,8.951,9.225,12.337c0,0,6.729,1.631,3.708,3.908c0,0-7.757,0.293-12.306-1.382c0,0-7.752,0.615-8.763-2.259 c0,0,0.019-2.253,0.847-4.08c0,0-1.705-11.277-7.258-18.693c-4.007-5.353-4.875-7.575-2.838-26.762c0,0-6.327-4.001-10.068-18.444 c-1.096-4.25-2.786-11.575-4.141-17.019c0,0-9.715,20.386-8.884,30.634c0,0,4.625,10.504,5.237,14.499 c0.518,3.416,0.411,8.926-1.023,13.755c-1.483,4.993,1.696,16.604,2.707,20.538c0,0,2.512,6.79-2.356,6.632 c0,0-8.424-1.06-11.125,0.913c0,0-9.608,1.182-11.615,0.293c0,0-3.206-1.2,2.189-3.617c0,0,5.736-0.152,7.742-3.77 c0,0,2.533-3.026,3.367-3.489c0,0-3.528-8.823-6.938-21.586c-1.303-4.914-2.177-16.246-2.975-21.251 c-0.505-3.117,1.148-10.443,0.149-13.481c-2.625-8.05-6.677-14.176-0.351-33.521c0,0,3.438-8.12,5.396-12.69 c2.667-6.235,2.862-17.527,0-26.731c0,0-5.718-8.162-6.056-15.999c0,0,0.682-5.124-7.587-4.98c0,0-6.223,1.363-16.499-8.175 l-6.068-4.521c0,0-3.212-1.589,0.149-10.425c0,0,5.83-11.094,8.948-14.34l2.183-4.549c0,0,1.939-5.054,10.282-2.855 c0,0,4.795,0.682,4.034,3.538c0,0,1.178,8.972-1.677,7.849c0,0-1.358-0.743-1.684-2.563c0,0-4.214-0.204-5.148-1.428 c0,0-2.189,6.865-3.273,8.077c0,0,1.083,9.8,0.155,11.776c0,0,8.765-4.533,14.333,3.404c0,0,10.781-3.246,15.077,2.563 c0,0,7.334,5.532,8.494-1.132l-0.158-4.01c0,0-1.023-2.415-1.264-4.153c0,0-1.854,1.133-2.451-3.86c0,0-1.087-3.248,1.184-2.719 c0,0-3.796-9.883,6.564-12.602c0,0,13.472-3.081,12.291,11.627c0,0,4.89-1.145,0,7.395c0,0-1.452-0.329-1.179,0.32 c0.174,0.38,0.436,4.458,0.436,4.458s0.329,6.418,5.889,5.355c0,0,9.931-6.957,14.735-3.023c0,0,6.32-8.007,14.833-3.766 c0,0,2.691,0.441,3.459-1.888c0,0-5.316-4.311-4.037-16.087c0,0-0.414-4.153-2.29-3.182l-1.863,0.356c0,0-0.407,3.047-5.888,2.755 c0,0,0.194,1.054-0.067,1.272c-0.858,0.731-3.744,0.579-4.725,0c-2.247-1.315-2.479-7.8,2.697-9.292L140.457,0.394z"></path> </g> </g></svg>
-                            <h3>GANAR FUERZA</h3>
+                            <h3 class="h4">GANAR FUERZA</h3>
                         </div>
                         <div class=" d-flex flex-column justify-content-end">
                             <div class="d-flex align-items-center">
@@ -147,11 +148,11 @@
 
                     </div>  
                     
-                    <div class="col">
+                    <div class="col me-5">
                         
                         <div class="d-flex align-items-center mb-4">
                             <svg class="svg-clases me-3 mb-2" width="64px" height="64px" viewBox="0 -137.5 1299 1299" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M164.854878 495.321455h188.089332l95.704278-132.953342a48.313142 48.313142 0 0 1 82.796187 7.376053l131.846934 275.495551 160.98234-411.952518a49.050747 49.050747 0 0 1 46.65353-30.795018 48.313142 48.313142 0 0 1 44.440715 33.745439l83.349391 264.431473h65.646865a594.694213 594.694213 0 0 0 38.539873-52.554372c73.760522-119.676448-9.220065-376.178665-234.005258-376.178665s-252.260987 176.656451-252.260987 176.656451-27.475795-176.656451-252.260987-176.656451S56.242509 328.438273 130.371834 448.114721a554.310327 554.310327 0 0 0 34.483044 47.206734z" fill="#CBB89D"></path><path d="M963.312534 596.742173a48.313142 48.313142 0 0 1-46.100327-33.745439l-52.738773-167.436386-151.577874 387.242743a48.313142 48.313142 0 0 1-43.334307 30.795019h-1.290809a48.313142 48.313142 0 0 1-43.518708-27.475795L479.99671 483.519771l-62.512043 86.853016a48.313142 48.313142 0 0 1-39.277478 20.099742h-131.109328c147.521045 166.883182 370.277823 394.987598 370.277822 394.987598s217.962344-221.65037 364.376982-388.717954h-18.440131z" fill="#CBB89D"></path><path d="M127.974617 498.456277H184.95462a862.629311 862.629311 0 0 1-65.093661-85.377805c-36.880261-60.483628-32.639031-158.769525 11.986085-238.799691a243.778527 243.778527 0 0 1 219.621956-130.187322c217.777943 0 247.09775 163.379557 248.204158 170.386807a22.128157 22.128157 0 0 0 43.70311 0 201.550628 201.550628 0 0 1 40.383886-84.271397c45.362721-57.164405 115.250816-86.11541 208.004673-86.11541a243.594126 243.594126 0 0 1 219.068752 130.371723c44.625116 80.030167 49.41955 178.316063 11.986085 238.799692a906.148019 906.148019 0 0 1-69.334891 90.172239h57.164405a726.909949 726.909949 0 0 0 49.603951-66.937675c45.547123-73.760522 41.121491-190.117747-10.879677-283.609209a288.772446 288.772446 0 0 0-258.161829-152.868682c-165.961176 0-238.799692 85.562206-270.147913 147.521045-31.348222-61.221234-104.555541-147.521045-269.963513-147.521045a288.772446 288.772446 0 0 0-258.161828 152.868682c-52.001168 93.491462-56.4268 210.033088-10.879678 283.609209a686.341662 686.341662 0 0 0 45.915926 61.958839zM977.142632 591.763338c-130.371724 145.861433-302.971346 324.361898-355.341317 378.391481-53.107576-55.320392-228.842021-236.402475-359.766949-383.185915h-59.008418c153.975091 175.550044 389.63996 416.746952 402.916854 430.392649a22.128157 22.128157 0 0 0 31.532624 0c13.276894-13.645697 244.516132-250.232573 398.675624-425.413813h-59.008418z" fill="#806044"></path><path d="M262.58757 587.522108h-202.841437c-33.007834 0-59.746023 19.73094-59.746023 44.256314s26.738189 44.256313 59.746023 44.256313h282.3184zM1234.566855 592.316542h-258.161828l-76.342141 88.328226h333.950765c35.773853 0 64.724858-19.73094 64.724859-44.256314s-28.397801-44.071912-64.171655-44.071912z" fill="#806044"></path></g></svg>
-                            <h3>FLEX & MIND</h3>
+                            <h3 class="h4">FLEX & MIND</h3>
                         </div>
                         <div class=" d-flex flex-column justify-content-end">
                             <div class="d-flex align-items-center">
@@ -178,7 +179,7 @@
             </article>
         </section>
 
-        <section>
+        <section class="section">
             <h2 class="h1 text-center fw-bold text-main-color mb-5">CONOCE A NUESTROS PROFESIONALES</h2>
             <article class="d-flex justify-content-evenly align-items-center gap-5">
                 <div class="card bg-transparent border-0" style="width: 20rem;">
@@ -216,22 +217,87 @@
                   </div>
             </article>
         </section>
-        <section>
-            <h2>DISPONEMOS DE MÚLTIPLES OPCIONES DE MEMBRESÍA</h2>
-            <article>
-                <div>
-                    <h3>PLAN ESTÁNDAR</h3>
-                    <img src="" alt="">
-                    <p>24.99</p>
-                    <h4>¿Qué ventajas tiene?</h4>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+        <section class="section">
+            <h2 class="h1 text-center fw-bold text-main-color mb-5">DISPONEMOS DE MÚLTIPLES OPCIONES DE MEMBRESÍA</h2>
+            
+            <article class="row ">
+                <div class="col ">
+                    <div class="card text-center p-3 bg-2 border-0 h-100 d-flex flex-column justify-content-around  " >
+                        <img src="{{ asset('img/basico.jpeg') }}" class="card-img-top" alt="..." />
+                        <div class="card-body mt-3">
+                            <h5 class="card-title h2 fw-bolder">PLAN BÁSICO</h5>
+                            <p class="card-text h2">
+                                29.99/mes
+                            </p>
+                            <p class="card-text text-start h4 pt-3 fw-semibold">
+                                ¿Qué ventajas tiene?
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush text-start bg-transparent h-100 d-flex flex-column justify-content-evenly">
+                        <li class="list-group-item h5 fw-medium bg-transparent pb-4">Acceso ilimitado a la sala de pesas y cardio</li>
+                        <li class="list-group-item h5 fw-medium bg-transparent pb-4">Uso de instalaciones durante el horario regular</li>
+                        <li class="list-group-item h5 fw-medium bg-transparent pb-4">Acceso a vestuario y duchas</li>
+                        <li class="list-group-item h5 fw-medium bg-transparent pb-4">Una evaluación física inicial gratuita</li>
+                        <li class="list-group-item h5 fw-medium bg-transparent pb-4">Participación en clases grupales básicas (como Zumba, aeróbicos, y estiramientos)</li>
+                        </ul>
+                        <div class="card-body h5 pt-3">
+                            <p>Ideal para principiantes y aquellos que buscan un acceso económico a las instalaciones y servicios básicos del gimnasio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col ">
+                    <div class="card text-center p-3 bg-2 border-0 h-100" >
+                        <img src="{{ asset('img/premium.jpeg') }}" class="card-img-top" alt="..." />
+                        <div class="card-body mt-3">
+                            <h5 class="card-title h2 fw-bolder">PLAN PREMIUM</h5>
+                            <p class="card-text h2">
+                            49.99/mes
+                            </p>
+                            <p class="card-text text-start h4 pt-3 fw-semibold">
+                            ¿Qué ventajas tiene?
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush text-start bg-transparent h-100 d-flex flex-column justify-content-evenly">
+                            <li class="list-group-item h5 fw-medium bg-transparent pb-4">Todas las ventajas del Plan Básico</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent pb-4">Acceso a todas las clases grupales (incluyendo yoga, pilates, HIIT, y spinning)</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent pb-4">Dos sesiones de entrenamiento personal al mes</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent pb-4">Acceso a sauna y sala de relajación</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent pb-4">Descuento del 10% en programas de nutrición y planes de dieta personalizados</li>
+                        </ul>
+                        <div class="card-body h5 pt-3">
+                            <p>Ideal para intermedios y avanzados que buscan una experiencia más completa y personalizada en el gimnasio.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col ">
+                    <div class="card text-center p-3 bg-2 border-0 h-100" >
+                        <img src="{{ asset('img/vip.jpeg') }}" class="card-img-top" alt="..." />
+                        <div class="card-body body mt-3">
+                            <h5 class="card-title h2 fw-bolder">PLAN VIP</h5>
+                            <p class="card-text h2">
+                                119.99/mes
+                            </p>
+                            <p class="card-text text-start h4 pt-3 fw-semibold">
+                            ¿Qué ventajas tiene?
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush text-start bg-transparent">
+                            <li class="list-group-item h5 fw-medium bg-transparent">todas las ventajas del Plan Premium</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Acceso 24/7 al gimnasio</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Cuatro sesiones de entrenamiento personal al mes</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Programa de nutrición personalizado con seguimiento mensual</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Evaluaciones físicas trimestrales</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Toallas y bebidas deportivas gratuitas</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Servicio de lavandería para ropa de gimnasio</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Estacionamiento reservado</li>
+                            <li class="list-group-item h5 fw-medium bg-transparent">Regalo de bienvenida (kit de entrenamiento)</li>
+                        </ul>
+                        <div class="card-body h5 pt-3">
+                            <p>Ideal para entusiastas del fitness y deportistas que buscan el máximo rendimiento y una atención personalizada exclusiva.</p>
+                        </div>
+                    </div>
                 </div>
             </article>
         </section>

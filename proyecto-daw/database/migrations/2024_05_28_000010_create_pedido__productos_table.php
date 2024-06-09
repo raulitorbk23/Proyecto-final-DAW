@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pedido__productos', function (Blueprint $table) {
-            $table->primary(['id_pedido','id_producto']);
+            
             $table->integer('cantidadProducto');
             $table->decimal('precioProducto', total: 8, places: 2);
 
 
             $table->foreignId('id_pedido')->references('id_pedido')->on('pedidos')->onDelete('cascade');
             $table->foreignId('id_producto')->references('id_producto')->on('productos')->onDelete('cascade');
+
+            $table->primary(['id_pedido','id_producto']);
         });
     }
 

@@ -1,7 +1,72 @@
 *{
 	box-sizing: border-box;
-	font-family: Lato sans-serif;
 }
+
+
+/*CSS Fuente Google Fonts Chakra Petch Static*/
+
+.chakra-petch-light {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+  }
+  
+  .chakra-petch-regular {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+  }
+  
+  .chakra-petch-medium {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+  }
+  
+  .chakra-petch-semibold {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+  }
+  
+  .chakra-petch-bold {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+  }
+  
+  .chakra-petch-light-italic {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 300;
+	font-style: italic;
+  }
+  
+  .chakra-petch-regular-italic {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+  }
+  
+  .chakra-petch-medium-italic {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 500;
+	font-style: italic;
+  }
+  
+  .chakra-petch-semibold-italic {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 600;
+	font-style: italic;
+  }
+  
+  .chakra-petch-bold-italic {
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 700;
+	font-style: italic;
+  }
+  
+  
+  
 
 :root{
 	--main-bg-color: #EDE1D2;
@@ -66,6 +131,8 @@
 }
 
 
+
+
 /*Estilos generales - DE MOMENTO PROVISIONALES*/
 
 body{
@@ -77,7 +144,11 @@ body{
 	align-items: center;
 }
 
-section{
+main{
+	padding: 100px !important;
+}
+
+.section{
 	margin-bottom: 200px;
 }
 
@@ -96,7 +167,7 @@ header{
 	flex-flow: row nowrap;
 	justify-content: space-evenly;
 	align-items: center;
-	margin-bottom: 100px;
+
 }
 
 #logo{
@@ -124,6 +195,9 @@ nav a{
 	font-size: 1.2rem;
 	padding: 1rem;
 	border-radius: 10%;
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 700;
+	font-style: normal;
 }
 
 nav a:hover{

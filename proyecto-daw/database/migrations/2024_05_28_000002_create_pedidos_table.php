@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_pedido')->autoIncrement();
             $table->date('fecIni');
             $table->date('fecFin')->nullable();
-            $table->enum('estado',['pendiente','realizado','fallado'])->default('pendiente');
+            $table->string('estado',['pendiente','realizado','fallado'])->default('pendiente');
             $table->decimal('precioTotal', total: 8, places: 2);
 
 
