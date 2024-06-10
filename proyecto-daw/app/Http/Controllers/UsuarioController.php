@@ -54,9 +54,11 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    public function show($id_usuario)
     {
+        $usuario = Usuario::with('tarjetas', 'direcciones', 'pedidos', 'pagos')->findOrFail($id_usuario);
 
+        return view('dashboard.usuarios.show', compact('usuario'));
     }
 
     /**

@@ -59,6 +59,8 @@ return [
     |
     */
 
+    //establecemos el modelo de usuario como Usuario para que no utilice el modelo por defecto
+
     'providers' => [
         'users' => [
             'driver' => 'eloquent',

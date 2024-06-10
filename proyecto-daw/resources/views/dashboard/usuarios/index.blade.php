@@ -100,6 +100,7 @@
                                 <img src="{{ asset('img/delete.jpg') }}" alt="Eliminar" class="acciones">
                             </button>
                         </form>
+                        <a href="{{ route('usuario.show', ['usuario' => $usuario->id_usuario]) }}" class="btn btn-primary mx-2">MÁS</a>
                     </td>
                 </tr>
             @endforeach

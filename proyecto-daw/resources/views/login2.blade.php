@@ -77,7 +77,13 @@
                 <label for="password">Contraseña</label>
                 <input type="password" id="password" name="password" required>
             </div>
+
             <button type="submit">Registrar</button>
+
+            <div class="text-center">
+                <p>No tienes cuenta? <a href="{{ route('user.registro') }}">Registrate</a></p>
+            </div>
+
         </form>
     </div>
 </body>

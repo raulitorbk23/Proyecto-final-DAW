@@ -20,69 +20,108 @@
     <section class=" d-flex justify-content-between gap-5 w-100 align-items-start ">
       <article class="w-50 ">
         <h2 class=" display-5 chakra-petch-medium">Dirección de envio</h2>
-        <form id="PagoFormulario" action="" class="mb-5">
+        <div class="mb-4">
+          <h4>Tarjetas Guardadas</h4>
+          @if($tarjetas->isEmpty())
+              <p>No tienes tarjetas guardadas.</p>
+          @else
+              <div class="form-group">
+                  @foreach($tarjetas as $tarjeta)
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" name="tarjetaGuardada" id="tarjeta{{ $tarjeta->id_tarjeta }}" value="{{ $tarjeta->id_tarjeta }}">
+                          <label class="form-check-label" for="tarjeta{{ $tarjeta->id_tarjeta }}">
+                              {{ $tarjeta->numTarjeta }} - {{ $tarjeta->titular }} - {{ $tarjeta->fecExpira }}
+                          </label>
+                      </div>
+                  @endforeach
+              </div>
+          @endif
+          <button id="addTarjetaButton" class="btn btn-primary">Añadir Nueva Tarjeta</button>
+      </div>
+  
+      <div class="mb-4">
+          <h4>Direcciones Guardadas</h4>
+          @if($direcciones->isEmpty())
+              <p>No tienes direcciones guardadas.</p>
+          @else
+              <div class="form-group">
+                  @foreach($direcciones as $direccion)
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" name="direccionGuardada" id="direccion{{ $direccion->id_direccion }}" value="{{ $direccion->id_direccion }}">
+                          <label class="form-check-label" for="direccion{{ $direccion->id_direccion }}">
+                              {{ $direccion->pais }}, {{ $direccion->localidad }}, {{ $direccion->codPostal }}, {{ $direccion->direccion }}, {{ $direccion->telefono }}
+                          </label>
+                      </div>
+                  @endforeach
+              </div>
+          @endif
+          <button id="addDireccionButton" class="btn btn-primary">Añadir Nueva Dirección</button>
+      </div>
+  
+      <div id="formTarjeta" class="d-none">
+          <h2>Datos de tarjeta</h2>
+          <form>
+            
+            @csrf
+            @method('POST')
+            
+            <div class="mb-3">
+                <label for="titular" class="form-label">Titular</label>
+                <input type="text" class="form-control" id="titular" name="titular" maxlength="50" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="numTarjeta" class="form-label">Número de tarjeta</label>
+                <input type="text" class="form-control" id="numTarjeta" name="numTarjeta" maxlength="20" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="fecExpira" class="form-label">Fecha de Expiración</label>
+                <input type="text" class="form-control" id="fecExpira" name="fecExpira" placeholder="MM/YY" maxlength="5" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="cvc" class="form-label">CVC</label>
+                <input type="text" class="form-control" id="cvc" name="cvc" maxlength="3" required>
+            </div>
+              
+          </form>
+      </div>
+  
+      <div id="formDireccion" class="d-none">
+          <h2>Datos de dirección de envío</h2>
+          <form>
 
-          @csrf
+            @csrf
+            @method('POST')
 
-          @method('POST')
+            <div class="mb-3">
+                <label for="pais" class="form-label">Pais</label>
+                <input type="text" class="form-control" id="pais" name="pais" required>
+            </div>
 
-          <div class="mb-3">
-              <label for="pais" class="form-label">Pais</label>
-              <input type="text" class="form-control" id="pais" name="pais" >
-              <div class="invalid-feedback">El país es requerido.</div>
-          </div>
-      
-          <div class="mb-3">
-              <label for="localidad" class="form-label">Localidad</label>
-              <input type="text" class="form-control" id="localidad" name="localidad">
-              <div class="invalid-feedback">La localidad es requerida.</div>
-          </div>
-      
-          <div class="mb-3">
-              <label for="codPostal" class="form-label">Código Postal</label>
-              <input type="text" class="form-control" id="codPostal" name="codPostal" >
-              <div class="invalid-feedback"></div>
-          </div>
-      
-          <div class="mb-3">
-              <label for="direccion" class="form-label">Direccion</label>
-              <input type="text" class="form-control" id="direccion" name="direccion" >
-              <div class="invalid-feedback"></div>
-          </div>
-      
-          <div class="mb-3">
-              <label for="telefono" class="form-label">Teléfono</label>
-              <input type="text" class="form-control" id="telefono" name="telefono">
-              <div class="invalid-feedback"></div>
-          </div>
+            <div class="mb-3">
+                <label for="localidad" class="form-label">Localidad</label>
+                <input type="text" class="form-control" id="localidad" name="localidad" required>
+            </div>
 
-        <h2 class=" display-5 chakra-petch-medium">Datos de tarjeta</h2>
+            <div class="mb-3">
+                <label for="codPostal" class="form-label">Código Postal</label>
+                <input type="text" class="form-control" id="codPostal" name="codPostal" required>
+            </div>
 
-          <div class="mb-3">
-              <label for="titular" class="form-label">Titular</label>
-              <input type="text" class="form-control" id="titular" name="titular" maxlength="50" required>
-              <div class="invalid-feedback">El titular es requerido.</div>
-          </div>
-      
-          <div class="mb-3">
-              <label for="numTarjeta" class="form-label">Número de tarjeta</label>
-              <input type="text" class="form-control" id="numTarjeta" name="numTarjeta" maxlength="20" required>
-              <div class="invalid-feedback">Número de tarjeta inválido.</div>
-          </div>
-      
-          <div class="mb-3">
-              <label for="fecExpira" class="form-label">Fecha de Expiración</label>
-              <input type="text" class="form-control" id="fecExpira" name="fecExpira" placeholder="MM/YY" maxlength="5" required>
-              <div class="invalid-feedback">Fecha de expiración inválida.</div>
-          </div>
-      
-          <div class="mb-3">
-              <label for="cvc" class="form-label">CVC</label>
-              <input type="text" class="form-control" id="cvc" name="cvc" maxlength="3" required>
-              <div class="invalid-feedback">CVC inválido.</div>
-          </div>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Direccion</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" required>
+            </div>
 
-        </form>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" required>
+            </div>   
+             
+          </form>
+      </div>
 
       </article>
 

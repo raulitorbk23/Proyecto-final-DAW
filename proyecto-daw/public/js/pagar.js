@@ -3,6 +3,20 @@ var carrito = [];
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Lógica que maneja si el usuario posee tarjetas y direccion asociados o no
+    const addTarjetaButton = document.getElementById('addTarjetaButton');
+    const addDireccionButton = document.getElementById('addDireccionButton');
+    const formTarjeta = document.getElementById('formTarjeta');
+    const formDireccion = document.getElementById('formDireccion');
+
+    addTarjetaButton.addEventListener('click', function() {
+        formTarjeta.classList.toggle('d-none');
+    });
+
+    addDireccionButton.addEventListener('click', function() {
+        formDireccion.classList.toggle('d-none');
+    });
+
     // Campos de dirección de envío
     const pais = document.getElementById('pais');
     const localidad = document.getElementById('localidad');
@@ -106,74 +120,85 @@ fetch('/webs/1A_Laravel/proyecto-daw/public/get', {
     });
 
     paypal.Buttons({
-    style:{
-        color: 'black',
-        label: 'pay'
-    },
-    createOrder: function(data, actions){
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    currency_code: "EUR",
-                    value: total.toFixed(2)
-                }
-            }]
-        })
-    },
-    onApprove: function(data, actions){
-        actions.order.capture().then(function(detalles){
-            console.log(detalles);
-
-            const infoEnvio = {
-                pais: pais.value,
-                localidad: localidad.value,
-                codPostal: codPostal.value,
-                direccion: direccion.value,
-                telefono: telefono.value,
-            };
-
-            const infoTarjeta = {
-                numTarjeta: numTarjeta.value,
-                titular: titular.value,
-                fecExpira: fecExpira.value,
-                cvc: cvc.value,
-            }
-
-            var URL = '/webs/1A_Laravel/proyecto-daw/public/pagar';
-            fetch(URL, {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': token
-                },
-                body: JSON.stringify({
-                    data: JSON.stringify({
-                        detalles : detalles,
-                        infoEnvio : infoEnvio,
-                        infoTarjeta : infoTarjeta
-                    })
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                console.log(response);
-                //return response.json();
-            })
-            .then(data => {
-
-            })
-            .catch(error => {
-                console.error('Error:', error);
+        style: {
+            color: 'black',
+            label: 'pay'
+        },
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        currency_code: "EUR",
+                        value: total.toFixed(2)
+                    }
+                }]
             });
-        });
-    },
-    onCancel: function(data){
-        alert("pago cancelado");
-        console.log(data);
-    }
-}).render('#paypal-button-container');    
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(detalles) {
+                const selectedTarjeta = document.querySelector('input[name="tarjetaGuardada"]:checked');
+                const selectedDireccion = document.querySelector('input[name="direccionGuardada"]:checked');
+    
+                let infoEnvio = {};
+                let infoTarjeta = {};
+    
+                if (!selectedDireccion) {
+                    infoEnvio = {
+                        pais: document.getElementById('pais').value,
+                        localidad: document.getElementById('localidad').value,
+                        codPostal: document.getElementById('codPostal').value,
+                        direccion: document.getElementById('direccion').value,
+                        telefono: document.getElementById('telefono').value,
+                    };
+                }
+    
+                if (!selectedTarjeta) {
+                    infoTarjeta = {
+                        numTarjeta: document.getElementById('numTarjeta').value,
+                        titular: document.getElementById('titular').value,
+                        fecExpira: document.getElementById('fecExpira').value,
+                        cvc: document.getElementById('cvc').value,
+                    };
+                }
+    
+                const requestData = {
+                    detalles: detalles,
+                    infoEnvio: selectedDireccion ? null : infoEnvio,
+                    infoTarjeta: selectedTarjeta ? null : infoTarjeta,
+                    tarjeta_id: selectedTarjeta ? selectedTarjeta.value : null,
+                    direccion_id: selectedDireccion ? selectedDireccion.value : null
+                };
+    
+                fetch('/webs/1A_Laravel/proyecto-daw/public/pagar', {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token
+                    },
+                    body: JSON.stringify({ data: JSON.stringify(requestData) })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    let id_pedido = data.data;
+                    console.log(id_pedido)
+                    window.location.href = `http://localhost/webs/1A_Laravel/proyecto-daw/public/pedido/${id_pedido}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        },
+        onCancel: function(data) {
+            alert("Pago cancelado");
+            console.log(data);
+        }
+    }).render('#paypal-button-container');
 
 })
 .catch(error => {

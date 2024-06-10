@@ -12,6 +12,7 @@ use App\Models\Tarjeta;
 use App\Models\Usuario;
 use App\Services\SessionServices;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +33,11 @@ class PagoController extends Controller
     {
         $productosCarrito = $this->SessionServices->obtenerDatosCookie('carrito');
         #return $productosCarrito;
-        return view('pagar', compact('productosCarrito'));
+        $user = Auth::user();
+        $tarjetas = $user->tarjetas;
+        $direcciones = $user->direcciones;
+
+        return view('pagar', compact('tarjetas', 'direcciones', 'productosCarrito'));
     }
 
     /**
@@ -48,25 +53,23 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
-
         $result = $request->all();
-
         $productosCarrito = $this->SessionServices->obtenerDatosCookie('carrito');
-
         $data = json_decode($result['data'], true);
-
-        #dd($data);
-
+    
         $detalle = $data['detalles'];
-        $infoEnvio = $data['infoEnvio'];
-        $infoTarjeta = $data['infoTarjeta'];
-        
+        $infoEnvio = $data['infoEnvio'] ?? null;
+        $infoTarjeta = $data['infoTarjeta'] ?? null;
+        $tarjetaId = $data['tarjeta_id'] ?? null;
+        $direccionId = $data['direccion_id'] ?? null;
+    
         $fecha = $detalle['update_time'];
         $fechaCarbon = Carbon::parse($fecha);
         $fechaFormateada = $fechaCarbon->toDateString();
-
+    
         $userId = Auth::id();
-
+    
+        // Crear pago
         $pago = Pago::create([
             'id_transaccion' => $detalle['id'],
             'cantidad' => $detalle['purchase_units'][0]['amount']['value'],
@@ -75,38 +78,39 @@ class PagoController extends Controller
             'fecPago' => $fechaFormateada,
             'id_cliente' => $detalle['payer']['payer_id'],
             'id_usuario' => $userId,
-            'id_tarjeta' => 1,
+            'id_tarjeta' => $tarjetaId ?? 1, // Usa 1 si no hay tarjeta seleccionada
         ]);
+    
+        // Guardar dirección y tarjeta solo si son nuevas
+        if (!$direccionId && $infoEnvio) {
+            $direccionEnvio = DireccionEnvio::create($infoEnvio);
+        } else {
+            $direccionEnvio = DireccionEnvio::find($direccionId);
+        }
+    
+        if (!$tarjetaId && $infoTarjeta) {
+            $tarjeta = Tarjeta::create($infoTarjeta);
+        } else {
+            $tarjeta = Tarjeta::find($tarjetaId);
+        }
+        
+        $total = 0;
+        foreach ($productosCarrito as $index => $item){
+            $total += $item['precio'] * $item['cantidad'];
+        }
 
-        $direccionEnvio = DireccionEnvio::create([
-            'pais' => $infoEnvio['pais'],
-            'localidad' => $infoEnvio['localidad'],
-            'codPostal' => $infoEnvio['codPostal'],
-            'direccion' => $infoEnvio['direccion'],
-            'telefono' => $infoEnvio['telefono'],
-        ]);
-
-        $tarjeta = Tarjeta::create([
-            'numTarjeta' => $infoTarjeta['numTarjeta'],
-            'titular' => $infoTarjeta['titular'],
-            'fecExpira' => $infoTarjeta['fecExpira'],
-            'cvc' => $infoTarjeta['cvc'],
-        ]);
-
+        // Crear pedido
         $pedido = Pedido::create([
-            'fecIni' => $fechaFormateada,  
+            'fecIni' => $fechaFormateada,
             'estado' => 'realizado',
-            'precioTotal' => array_sum(array_column($productosCarrito, 'precio')) * array_sum(array_column($productosCarrito, 'cantidad')),
+            'precioTotal' => $total,
             'id_usuario' => $userId,
             'id_direccion' => $direccionEnvio->id_direccion,
         ]);
-
-        
-
+    
+        // Adjuntar productos al pedido
         foreach ($productosCarrito as $producto) {
-
             $idProd = Producto::where('nombre', $producto['nombre'])->first();
-
             if ($idProd) {
                 $pedido->productos()->attach($idProd->id_producto, [
                     'cantidadProducto' => $producto['cantidad'],
@@ -115,15 +119,33 @@ class PagoController extends Controller
             }
         }
 
+        $pedido->pagos()->attach([$pago->id_pago]);
+    
+        // Tablas relacionales
         $usuario = Usuario::find($userId);
 
-        //tablas relacionales
-        $usuario->direcciones()->attach($direccionEnvio->id_direccion);
-
-        $usuario->tarjetas()->attach($tarjeta->id_tarjeta);
-
+        
+        $usuario->direcciones()->syncWithoutDetaching([$direccionEnvio->id_direccion]);
+        $usuario->tarjetas()->syncWithoutDetaching([$tarjeta->id_tarjeta]);
+    
+        // Actualizar el id_tarjeta del pago
         $pago->update(['id_tarjeta' => $tarjeta->id_tarjeta]);
+
+        Session::forget('carrito');
+
+        return response()->json([
+            'data' => $pedido->id_pedido,
+        ]);
     }
+
+
+    public function detalles($id_pedido)
+    {
+        $pedido = Pedido::with('direccionEnvio', 'productos', 'pagos.tarjeta')->findOrFail($id_pedido);
+        return view('detallesPedido', compact('pedido'));
+    }
+
+
 
     /**
      * Display the specified resource. Pago $pago

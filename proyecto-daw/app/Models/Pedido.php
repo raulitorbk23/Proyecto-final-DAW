@@ -12,7 +12,8 @@ class Pedido extends Model
     protected $primaryKey = 'id_pedido';
 
     protected $fillable = [
-        'fecIni',  
+        'fecIni', 
+        'fecFin',
         'estado',
         'precioTotal',
         'id_usuario',

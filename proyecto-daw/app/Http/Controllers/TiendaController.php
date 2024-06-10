@@ -12,97 +12,80 @@ class TiendaController extends Controller
 {
 
     public function index(){
+
         $productos = Producto::orderBy('updated_at','asc')->paginate(8);
 
-        $subcategorias = [];
         $scName = [];
-
-        foreach($productos as $producto){
-            if (!in_array($producto->id_subcategoria, $subcategorias)) {
-                array_push($subcategorias,$producto->id_subcategoria);
-            }
-        }
+        $subcategorias = Subcategoria::all();
 
         foreach($subcategorias as $subcategoria){
-            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+            array_push($scName,Subcategoria::findOrFail($subcategoria->id_subcategoria)->nombre);
         }
 
         return view('tienda',compact('productos','scName'));
     }
     
     public function suplementos(){
-        $productos = Producto::where('id_categoria',1)->orderBy('updated_at','asc')->paginate(6);
-        $subcategorias = [];
-        $scName = [];
-        foreach($productos as $producto){
-            if (!in_array($producto->id_subcategoria, $subcategorias)) {
-                array_push($subcategorias,$producto->id_subcategoria);
-            }
-        }
-        foreach($subcategorias as $subcategoria){
-            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
 
+        $productos = Producto::where('id_categoria',1)->orderBy('updated_at','asc')->paginate(6);
+        $subcategorias = Subcategoria::where('id_categoria',1)->get();
+        $scName = [];
+
+        foreach($subcategorias as $subcategoria){
+            array_push($scName,Subcategoria::findOrFail($subcategoria->id_subcategoria)->nombre);
         }
+
         return view('tienda',compact('productos','scName'));
 
     }
 
     public function ropa(){
+
         $productos = Producto::where('id_categoria',2)->orderBy('updated_at','asc')->paginate(6);
-        $subcategorias = [];
+        $subcategorias = Subcategoria::where('id_categoria',2)->get();
         $scName = [];
-        foreach($productos as $producto){
-            if (!in_array($producto->id_subcategoria, $subcategorias)) {
-                array_push($subcategorias,$producto->id_subcategoria);
-            }
-        }
+
         foreach($subcategorias as $subcategoria){
-            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+            array_push($scName,Subcategoria::findOrFail($subcategoria->id_subcategoria)->nombre);
         }
+
         return view('tienda',compact('productos','scName'));
     }
 
     public function accesorios(){
+
         $productos = Producto::where('id_categoria',3)->orderBy('updated_at','asc')->paginate(6);
-        $subcategorias = [];
+        $subcategorias = Subcategoria::where('id_categoria',3)->get();
         $scName = [];
-        foreach($productos as $producto){
-            if (!in_array($producto->id_subcategoria, $subcategorias)) {
-                array_push($subcategorias,$producto->id_subcategoria);
-            }
-        }
+
         foreach($subcategorias as $subcategoria){
-            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+            array_push($scName,Subcategoria::findOrFail($subcategoria->id_subcategoria)->nombre);
         }
+        
         return view('tienda',compact('productos','scName'));
     }
 
     public function calzado(){
+
         $productos = Producto::where('id_categoria',4)->orderBy('updated_at','asc')->paginate(6);
-        $subcategorias = [];
+        $subcategorias = Subcategoria::where('id_categoria',4)->get();
         $scName = [];
-        foreach($productos as $producto){
-            if (!in_array($producto->id_subcategoria, $subcategorias)) {
-                array_push($subcategorias,$producto->id_subcategoria);
-            }
-        }
+
         foreach($subcategorias as $subcategoria){
-            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+            array_push($scName,Subcategoria::findOrFail($subcategoria->id_subcategoria)->nombre);
         }
+
         return view('tienda',compact('productos','scName'));
     }
 
     public function ofertas(){
+
         $productos = Producto::where('descuento','>',0)->orderBy('updated_at','asc')->paginate(6);
-        $subcategorias = [];
+        $subcategorias = Subcategoria::all();
         $scName = [];
-        foreach($productos as $producto){
-            if (!in_array($producto->id_subcategoria, $subcategorias)) {
-                array_push($subcategorias,$producto->id_subcategoria);
-            }
-        }
+
         foreach($subcategorias as $subcategoria){
-            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+            array_push($scName,Subcategoria::findOrFail($subcategoria->id_subcategoria)->nombre);
         }
         return view('tienda',compact('productos','scName'));
     }
@@ -113,16 +96,13 @@ class TiendaController extends Controller
         ##Para ello utilizo una librería de laravel para manipular fechas 'Carbon' 
         $productos = Producto::where('created_at', '>=', Carbon::now()->subDays(30))->orderBy('updated_at','asc')->paginate(6);
 
-        $subcategorias = [];
+        $subcategorias = Subcategoria::all();
         $scName = [];
-        foreach($productos as $producto){
-            if (!in_array($producto->id_subcategoria, $subcategorias)) {
-                array_push($subcategorias,$producto->id_subcategoria);
-            }
-        }
+
         foreach($subcategorias as $subcategoria){
-            array_push($scName,Subcategoria::where('id_subcategoria', '=', $subcategoria)->first()->nombre);
+            array_push($scName,Subcategoria::findOrFail($subcategoria->id_subcategoria)->nombre);
         }
+        
         return view('tienda',compact('productos','scName'));
     }
 
