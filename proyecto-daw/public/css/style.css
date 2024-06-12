@@ -2,6 +2,18 @@
 	box-sizing: border-box;
 }
 
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .carousel-inner {
+        height: auto;
+    }
+}
+
 
 /*CSS Fuente Google Fonts Chakra Petch Static*/
 
@@ -98,6 +110,47 @@
 	background-color: rgb(203, 184, 157)!important;
 }
 
+.bg-3{
+	background-color: #F0C987;
+}
+
+/* Estilos para el efecto underline */
+.underline-effect {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #333; /* Color del texto */
+}
+
+.underline-effect::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Distancia del underline respecto al texto */
+    left: 0;
+    width: 0; /* Anchura inicial del underline */
+    height: 2px; /* Grosor del underline */
+    background-color: #007bff; /* Color del underline */
+    transition: width 0.3s ease-in-out; /* Transición de la anchura */
+}
+
+.underline-effect:hover::after {
+    width: 100%; /* Anchura completa del underline en el hover */
+}
+
+
+.subcategorias{
+	color: var(--main-text-color);
+	font-size: 1.2rem;
+	border-radius: 10%;
+	font-family: "Chakra Petch", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.subcategorias:hover{
+	background-color: #F5DEB7;
+}
+
 .vh-50{
 	height: 50vh;
 }
@@ -155,15 +208,13 @@
 body{
 	margin: 0 auto;
 	background: var(--main-bg-color);
-	display: flex;
-	flex-direction: column;
 	justify-content: start;
 	align-items: center;
 }
 
-main{
+/*main{
 	padding: 100px !important;
-}
+}*/
 
 .section{
 	margin-bottom: 200px;

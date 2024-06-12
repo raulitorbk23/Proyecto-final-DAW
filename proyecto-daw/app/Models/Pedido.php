@@ -40,7 +40,7 @@ class Pedido extends Model
 
     public function pagos()
     {
-        return $this->belongsToMany(Pago::class, 'pedido__pagos', 'id_pedido', 'id_pago');
+        return $this->hasMany(Pago::class, 'id_pedido', 'id_pedido');
     }
 
 }

@@ -16,7 +16,7 @@ class ProductoFactory extends Factory
         return [
             'nombre' => $this->faker->unique()->word(2, true),
             'descripcion' => $this->faker->paragraph(5, true),
-            'imagen' => $this->faker->image('public/img', 300, 400, null, false),
+            'imagen' => 'default.jpeg',
             'precioCompra' => $precioCompra,
             'precioVenta' => $this->faker->randomFloat(2, $precioCompra, 99.99),
             'descuento' => null,

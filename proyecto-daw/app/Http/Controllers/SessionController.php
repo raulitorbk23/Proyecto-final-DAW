@@ -11,42 +11,29 @@ class SessionController extends Controller
     public function storeData(Request $request)
     {
         $cookie = $request->cookie;
-
         switch ($cookie){
-
             case 'carrito':
-
                 $producto = Producto::where('nombre', $request->data)->first();
-
                 if (!$producto) {
                     return response()->json([
                         'message' => 'Producto no encontrado',
                     ], 404);
                 }
-
                 $precioVenta = is_numeric($producto->precioVenta) ? $producto->precioVenta : 0;
                 $descuento = isset($producto->descuento) && is_numeric($producto->descuento) ? $producto->descuento : 0;
                 $precioFinal = $precioVenta - $descuento;
                 $precioFinal = number_format($precioFinal, 2, '.', '');
-
                 $jsonProducto = [
                     'nombre' => $producto->nombre,
                     'precio' => (float) $precioFinal, 
                     'img' => $producto->imagen,
                     'cantidad' => 1
                 ];
-
                 if(!Session::has('carrito')){
-
                     Session::put('carrito', [$jsonProducto]);
-
                     return response()->json($jsonProducto, 200);
-
                 } else {
-
-
                     $carrito = Session::get('carrito');
-
                     // Verifica si el producto ya está en el carrito
                     $found = false;
                     foreach ($carrito as &$item) {
@@ -83,19 +70,14 @@ class SessionController extends Controller
                     return response()->json([
                         'message' => 'producto añadido a carrito',
                     ], 200);
-
                 } 
-
                 break;
 
             case 'default':
-
                 return response()->json([
                     'message' => 'ha ocurrido algun error case default',
                 ], 200);
-
         }
-
     }
 
     public function actualizarCantidad(Request $request)
@@ -120,7 +102,6 @@ class SessionController extends Controller
 
     public function getData()
     {
-
         if (Session::has('carrito')) {
             $data = Session::get('carrito');
             return response()->json([
@@ -132,11 +113,9 @@ class SessionController extends Controller
             ], 404);
         }
     }
-
     public function deleteData(Request $request)
     {
         $cookie = $request->cookie;
-
         switch ($cookie) {
             case 'carrito':
                 $carrito = Session::get('carrito', []);
@@ -153,7 +132,6 @@ class SessionController extends Controller
                 return response()->json([
                     'message' => 'Producto eliminado del carrito',
                 ], 200);
-
             default:
                 return response()->json([
                     'message' => 'Cookie no reconocida',

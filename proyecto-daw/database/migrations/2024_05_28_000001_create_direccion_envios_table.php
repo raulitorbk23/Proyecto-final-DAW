@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('direccion_envios', function (Blueprint $table) {
             $table->id('id_direccion')->autoIncrement();
             $table->timestamps();
-            $table->string('pais');
-            $table->string('localidad');
-            $table->string('codPostal');
-            $table->string('direccion');
-            $table->string('telefono');
+            $table->string('pais',30);
+            $table->string('localidad',50);
+            $table->string('codPostal',10);
+            $table->string('direccion',50);
+            $table->string('telefono',9);
         });
     }
 

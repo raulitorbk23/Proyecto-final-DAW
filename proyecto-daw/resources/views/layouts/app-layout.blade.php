@@ -21,83 +21,69 @@
         
     </head>
     <body class="chakra-petch-regular">
-            <nav class="navbar navbar-expand-lg container-fluid bg-2" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg container-fluid bg-2" data-bs-theme="dark">
             <div class="container">
-                <div class="col-2" id="logo">
+                <div class="" id="logo">
                     <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('/img/logo.png') }}" alt="logo de temple gym"></a>
                 </div>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse  w-60" id="navbarColor01">
-                <ul class="navbar-nav d-flex flex-nowrap justify-content-around list-inline">
+              <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav d-flex flex-wrap justify-content-center align-items-center list-inline">
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="{{ route('index') }}">INICIO</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('index') }}">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="#">INSTALACIONES</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('clases') }}">CLASES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="#">CLASES</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('contacto') }}">ENCUENTRANOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="#">MEMBRESÍA</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('tienda') }}">TIENDA</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="{{ route('contacto') }}">ENCUENTRANOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="{{ route('tienda') }}">TIENDA</a>
-                    </li>
+                    @guest
+                        <li class="nav-item"><a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('login') }}"> INICIAR SESIÓN</a></li>
+                    @endguest
                     
-                </ul>
-                <ul class="navbar-nav d-flex flex-nowrap justify-content-around list-inline">
-                    <li class="nav-item"><a class="nav-a p-2 p-lg-4" href="{{ route('login') }}"><small> INICIAR SESIÓN</small></a></li>
+                    @php
+                        $usuario = Auth::user();
+                    @endphp
+
+                    @if ($usuario && $usuario->rol === 'admin')
+                        <li class="nav-item">
+                            <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('admin') }}">
+                                <small>PANEL ADMIN</small>
+                            </a>
+                        </li>
+                    @endif
+                    @auth
+                        <form action="{{ route('user.logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">Cerrar Sesión</button>
+                        </form>
+                    @endauth
+                        
                 </ul>
               </div>
             </div>
           </nav>
         
-        <!--<header class="container-fluid">
-            <div class="container d-flex align-items-center justify-content-center">
-                <div class="col-2" id="logo">
-                    <a href="{{ route('index') }}"><img src="{{ asset('/img/logo.png') }}" alt="logo de temple gym"></a>
-                </div>
-                <nav class="col 10 d-flex align-items-center">
-                    <ul>
-                        <li>
-                            <a href="{{ route('index') }}">INICIO</a>
-                        </li>
-                        <li>
-                            <a href="#">INSTALACIONES</a>
-                        </li>
-                        <li>
-                            <a href="#">CLASES</a>
-                        </li>
-                        <li>
-                            <a href="#">MEMBRESÍA</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('contacto') }}">ENCUENTRANOS</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('tienda') }}">TIENDA</a>
-                        </li>
-                    </ul>
-                    <ul class=" d-flex align-items-center">
-                        <li><a href="{{ route('login') }}"><small> INICIAR SESIÓN</small></a></li>
-                    </ul>
-                </nav>
-        </header>-->
-       <main class="container d-flex flex-column justify-content-center">
+       <main class="container d-flex flex-column justify-content-center my-5">
             @yield('content')
         </main> 
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <footer class="py-4 bg-dark text-white text-center mt-auto w-100">
             <div class="container">
-                <p>&copy; 2024 Temple Gym. Todos los derechos reservados.</p>
-                <p><a href="#">Política de Privacidad</a> | <a href="#">Términos y Condiciones</a></p>
+                <p><a href="{{ route('Copyright') }}">&copy;</a> 2024 Temple Gym. Todos los derechos reservados.</p>
+                <div class="d-flex justify-content-center">
+                    <div class="row">
+                        <p class="col text-md-end"><a href="{{ route('PoliticasPrivacidad') }}">Política de Privacidad</a> | <a href="{{ route('TerminosCondiciones') }}">Términos y Condiciones</a></p>
+                        <p class="col text-md-start"><a href="{{ route('PoliticasCookies') }}">Política de Cookies</a> | <a href="{{ route('AvisoLegal') }}"> Aviso Legal</a></p>
+                    </div>
+                </div>
                 <p>Síguenos en <a href="#"><i class="fab fa-facebook"></i></a> <a href="#"><i class="fab fa-instagram"></i></a></p>
             </div>
         </footer>

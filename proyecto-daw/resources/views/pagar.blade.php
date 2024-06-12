@@ -141,9 +141,9 @@
 
             @foreach ($productosCarrito as $index => $item)
               <tr class="border-white">
-                <th class="bg-transparent" scope="row">{{ $index + 1 }}</th>
-                <td class="bg-transparent">{{ $item['nombre'] }}</td>
-                <td class="bg-transparent">{{ $item['precio'] * $item['cantidad'] }} €</td>
+                <th class="bg-transparent" scope="row">{{ is_integer($index) ? $index + 1 : '' }}</th>
+                <td class="bg-transparent">{{is_array($item) || is_object($item) ? $item['nombre'] : 'No hay productos en el carrito'}}</td>
+                <td class="bg-transparent">{{is_array($item) || is_object($item) ? $item['precio'] * $item['cantidad'] : 0}} €</td>
               </tr>
             @endforeach
             
@@ -152,11 +152,17 @@
           <tfoot>
             <tr class="border border-dark">
               <th class="bg-transparent" colspan="2">TOTAL</th>
-              @php 
+              @php
                 $total = 0;
-                foreach ($productosCarrito as $index => $item){
-                  $total += $item['precio'] * $item['cantidad'];
-                }
+                if (is_array($productosCarrito) || $productosCarrito instanceof \Illuminate\Support\Collection) {
+                    foreach ($productosCarrito as $item) {
+                        if (is_array($item)) {
+                            $total += $item['precio'] * $item['cantidad'];
+                        } elseif (is_object($item)) {
+                            $total += $item->precio * $item->cantidad;
+                        }
+                    }
+                } 
               @endphp
               <td class="bg-transparent">{{ $total }} €</td>
             </tr>

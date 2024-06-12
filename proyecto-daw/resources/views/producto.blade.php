@@ -10,11 +10,11 @@
 @section('content')
     <div class="row ">
         <div class="col-md-6 d-flex justify-content-center">
-            <img src="{{ asset('img/'.$producto->imagen) }}" alt='imagen de {{ $producto->nombre }}'>
+            <img class="img-fluid" src="{{ asset('img/'.$producto->imagen) }}" alt='imagen de {{ $producto->nombre }}'>
         </div>
         <div class="col-md-6">
             <h1 class="display-3">{{ $producto->nombre }}</h1>
-            <h3 class="h2">{{ $producto->descripcion }}</h3>
+            <h3 class="h2">{!! nl2br(e($producto->descripcion)) !!}</h3>
             <hr>
             <p class="h1">{{ $precioFinal }} €</p>
             <br>

@@ -14,7 +14,7 @@ class SubcategoriaSeeder extends Seeder
      * Run the database seeds.
      */
     public $suplementos = ['proteinas','vitaminas'];
-    public $ropas = ['camisetas de tirantes','pantalones cortos'];
+    public $ropas = ['camisetas','pantalones'];
     public $accesorios = ['straps','cinturones'];
     public $calzados = ['running','power'];
 

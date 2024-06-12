@@ -1,90 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Centrado</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+@extends('layouts.login-layout')
+@section('content')
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    @if (session('errors'))
+        <div class="alert alert-danger">
+            {{ session('errors') }}
+        </div>
+    @endif
 
-        .form {
-            background-color: #f7f7f7;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-        .form h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-    
-</head>
-<body>
-    {{ $errors }}
-    <div class="container">
-        <form class="form" method="post" action=" {{ route('user.login') }}">
+    <div class=" d-flex justify-content-center align-items-center h-100 ">
+        <form class="bg-2 p-5" method="post" action=" {{ route('user.login') }}">
             @csrf
             <h2>Inicia sesión</h2>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}" required>
             </div>
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input class="form-control" type="password" id="password" name="password" required>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                <label for="remember" class="form-check-label">Recuérdame</label>
             </div>
 
-            <button type="submit">Registrar</button>
+            <button class=" btn btn-primary" type="submit">Iniciar sesión</button>
 
             <div class="text-center">
                 <p>No tienes cuenta? <a href="{{ route('user.registro') }}">Registrate</a></p>
             </div>
 
         </form>
-    </div>
-</body>
-</html>
+    </div>    
+@endsection

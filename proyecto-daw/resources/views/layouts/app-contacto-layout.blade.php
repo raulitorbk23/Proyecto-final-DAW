@@ -32,64 +32,26 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse  w-60" id="navbarColor01">
-                <ul class="navbar-nav d-flex flex-nowrap justify-content-around list-inline">
+                <ul class="navbar-nav d-flex flex-wrap justify-content-lg-start justify-content-lg-start align-items-center list-inline">
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="{{ route('index') }}">INICIO</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('index') }}">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="#">INSTALACIONES</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('clases') }}">CLASES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="#">CLASES</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('contacto') }}">ENCUENTRANOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="#">MEMBRESÍA</a>
+                        <a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('tienda') }}">TIENDA</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="{{ route('contacto') }}">ENCUENTRANOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-a p-2 p-lg-4" href="{{ route('tienda') }}">TIENDA</a>
-                    </li>
-                    
+                    <li class="nav-item"><a class="nav-a p-2 p-lg-2 mx-1 my-2 my-lg-0" href="{{ route('login') }}"><small> INICIAR SESIÓN</small></a></li>
                 </ul>
-                <ul class="navbar-nav d-flex flex-nowrap justify-content-around list-inline">
-                    <li class="nav-item"><a class="nav-a p-2 p-lg-4" href="{{ route('login') }}"><small> INICIAR SESIÓN</small></a></li>
+                <ul class="navbar-nav d-flex flex-nowrap justify-content-start list-inline">
                 </ul>
               </div>
             </div>
           </nav>
-        <!--<header class="container-fluid">
-            <div class="container d-flex align-items-center justify-content-center">
-                <div class="col-2" id="logo">
-                    <a href="{{ route('index') }}"><img src="{{ asset('/img/logo.png') }}" alt="logo de temple gym"></a>
-                </div>
-                <nav class="col 10 d-flex align-items-center">
-                    <ul>
-                        <li>
-                            <a href="{{ route('index') }}">INICIO</a>
-                        </li>
-                        <li>
-                            <a href="#">INSTALACIONES</a>
-                        </li>
-                        <li>
-                            <a href="#">CLASES</a>
-                        </li>
-                        <li>
-                            <a href="#">MEMBRESÍA</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('contacto') }}">ENCUENTRANOS</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('tienda') }}">TIENDA</a>
-                        </li>
-                    </ul>
-                    <ul class=" d-flex align-items-center">
-                        <li><a href="{{ route('login') }}"><small> INICIAR SESIÓN</small></a></li>
-                    </ul>
-                </nav>
-        </header>-->
         <div class="hero ">
             <img src="{{ asset('img/encuentranos.jpeg') }}" alt="Encuéntranos" class="hero-img">
             <div class="hero-overlay"></div>
@@ -98,14 +60,20 @@
                 <p class="lead chakra-petch-semibold">Donde los dioses entrenan</p>
             </div>
         </div>
-       <main class="container d-flex flex-column justify-content-center">
+        
+       <main class="container d-flex flex-column justify-content-center my-5">
             @yield('content')
         </main> 
         
         <footer class="py-4 bg-dark text-white text-center mt-auto w-100">
             <div class="container">
-                <p>&copy; 2024 Temple Gym. Todos los derechos reservados.</p>
-                <p><a href="#">Política de Privacidad</a> | <a href="#">Términos y Condiciones</a></p>
+                <p><a href="{{ route('Copyright') }}">&copy;</a> 2024 Temple Gym. Todos los derechos reservados.</p>
+                <div class="d-flex justify-content-center">
+                    <div class="row">
+                        <p class="col text-md-end"><a href="{{ route('PoliticasPrivacidad') }}">Política de Privacidad</a> | <a href="{{ route('TerminosCondiciones') }}">Términos y Condiciones</a></p>
+                        <p class="col text-md-start"><a href="{{ route('PoliticasCookies') }}">Política de Cookies</a> | <a href="{{ route('AvisoLegal') }}"> Aviso Legal</a></p>
+                    </div>
+                </div>
                 <p>Síguenos en <a href="#"><i class="fab fa-facebook"></i></a> <a href="#"><i class="fab fa-instagram"></i></a></p>
             </div>
         </footer>

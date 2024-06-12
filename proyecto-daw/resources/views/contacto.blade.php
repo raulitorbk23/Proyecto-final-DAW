@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row gap-5 justify-content-lg-center mb-lg-5">
+    <div class="row gap-5 justify-content-lg-center mb-5">
         
         <div class="card mb-4 mb-md-0 col-12 col-lg-5 px-0">
             <div class="card-header bg-2 text-main-color">
@@ -11,7 +11,7 @@
             <div class="card-body">
                 <p><strong>Ubicación:</strong> Av. Europa 11204 Algeciras, Cádiz</p>
                 <p><strong>Teléfono:</strong> +34 777 77 77 77</p>
-                <p><strong>Email:</strong> contacto@gimnasio.com</p>
+                <p><strong>Email:</strong> contacto@templegym.com</p>
             </div>
         </div>
 

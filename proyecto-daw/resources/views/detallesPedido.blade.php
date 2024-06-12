@@ -1,10 +1,7 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles del Pedido</title>
-</head>
-<body>
+@extends('layouts.pago-layout')
+@section('content')
+    
+
     <h1>Detalles del Pedido</h1>
 
     @if ($pedido)
@@ -25,5 +22,4 @@
             <p>Tarjeta Utilizada: **** **** **** {{ substr($pago->tarjeta->numTarjeta, -4) }}</p>
         @endforeach
     @endif
-</body>
-</html>
+@endsection

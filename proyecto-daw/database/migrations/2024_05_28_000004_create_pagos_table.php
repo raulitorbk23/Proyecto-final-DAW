@@ -22,6 +22,7 @@ return new class extends Migration
 
             $table->foreignId('id_usuario')->references('id_usuario')->on('usuarios')->onDelete('cascade');
             $table->foreignId('id_tarjeta')->references('id_tarjeta')->on('tarjetas')->onDelete('cascade');
+            $table->foreignId('id_pedido')->references('id_pedido')->on('pedidos');
 
         });
     }

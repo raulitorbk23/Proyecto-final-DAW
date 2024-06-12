@@ -20,6 +20,7 @@ class Pago extends Model
         'id_cliente',
         'id_usuario',
         'id_tarjeta',
+        'id_pedido',
     ];
 
     public $timestamps = false;
@@ -34,9 +35,9 @@ class Pago extends Model
         return $this->belongsTo(Tarjeta::class, 'id_tarjeta', 'id_tarjeta');
     }
 
-    public function pedidos()
+    public function pedido()
     {
-        return $this->belongsToMany(Pedido::class, 'pedido__pagos', 'id_pago', 'id_pedido');
+        return $this->belongsTo(Pedido::class, 'id_pedido', 'id_pedido');
     }
            
         
